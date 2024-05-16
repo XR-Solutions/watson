@@ -2,14 +2,14 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Watson.Application.Interfaces;
-using Watson.Infrastructure.Persistence.Contexts;
-using Watson.Infrastructure.Persistence.Repositories;
+using Watson.Adapter.SqlServer.Contexts;
+using Watson.Adapter.SqlServer.Repositories;
 
-namespace Watson.Infrastructure.Persistence
+namespace Watson.Adapter.SqlServer
 {
     public static class ServiceRegistration
     {
-        public static void AddPersistenceInfrastructure(this IServiceCollection services, IConfiguration configuration)
+        public static void AddPersistenceAdapter(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(

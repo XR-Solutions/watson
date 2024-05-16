@@ -16,7 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Watson.Application\Watson.Application.csproj" />
-    <ProjectReference Include="..\Watson.Infrastructure.Persistence\Watson.Infrastructure.Persistence.csproj" />
+    <ProjectReference Include="..\Watson.Adapter.SqlServer\Watson.Adapter.SqlServer.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace Watson.Infrastructure.Persistence.Migrations
+namespace Watson.Adapter.SqlServer.Migrations
 {
     /// <inheritdoc />
     public partial class InitialMigration : Migration
