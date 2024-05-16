@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Watson.Application", "src\W
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Watson.Core", "src\Watson.Core\Watson.Core.csproj", "{CC797768-E642-49DE-BAB9-D39D3157BDE0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Watson.Infrastructure.Persistence", "src\Watson.Infrastructure.Persistence\Watson.Infrastructure.Persistence.csproj", "{324237BE-EB05-4A5F-852B-102A7177D641}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Watson.Adapter.SqlServer", "src\Watson.Adapter.SqlServer\Watson.Adapter.SqlServer.csproj", "{324237BE-EB05-4A5F-852B-102A7177D641}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{5159B531-5306-437B-B180-E480F4EF78A2}"
 EndProject

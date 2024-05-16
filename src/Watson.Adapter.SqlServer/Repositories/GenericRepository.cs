@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Watson.Application.Interfaces;
-using Watson.Infrastructure.Persistence.Contexts;
+using Watson.Adapter.SqlServer.Contexts;
 
-namespace Watson.Infrastructure.Persistence.Repositories
+namespace Watson.Adapter.SqlServer.Repositories
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {

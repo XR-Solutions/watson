@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Watson.Core.Common;
 
-namespace Watson.Infrastructure.Persistence.Contexts
+namespace Watson.Adapter.SqlServer.Contexts
 {
     public class ApplicationDbContext : DbContext
     {
