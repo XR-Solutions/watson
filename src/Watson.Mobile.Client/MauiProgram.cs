@@ -19,7 +19,8 @@ namespace Watson.Mobile.Client
 #if DEBUG
     		builder.Logging.AddDebug();
 #endif
-            builder.RegisterAppServices();
+            builder.RegisterAppServices()
+                .RegisterViews();
 
             return builder.Build();
         }

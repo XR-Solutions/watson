@@ -7,7 +7,7 @@ using Watson.Mobile.Client.Services.Navigation;
 
 namespace Watson.Mobile.Client.Extensions
 {
-    public static class AppServices
+    public static class AppServicesRegistrations
     {
         public static MauiAppBuilder RegisterAppServices(this MauiAppBuilder builder)
         {
