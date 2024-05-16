@@ -1,4 +1,4 @@
-# watson
+# Watson
 The Dutch Forensic Mixed Reality app
 
 ---
