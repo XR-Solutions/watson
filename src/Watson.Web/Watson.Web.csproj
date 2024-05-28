@@ -15,12 +15,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Watson.Adapter.Shared\Watson.Adapter.Shared.csproj" />
     <ProjectReference Include="..\Watson.Application\Watson.Application.csproj" />
     <ProjectReference Include="..\Watson.Adapter.SqlServer\Watson.Adapter.SqlServer.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Controllers\v1\" />
   </ItemGroup>
 
 </Project>

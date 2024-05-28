@@ -1,6 +1,7 @@
 using Watson.Web.Extensions;
 using Watson.Application;
 using Watson.Adapter.SqlServer;
+using Watson.Adapter.Shared;
 using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddApplicationLayer();
+builder.Services.AddSharedAdapter();
 builder.Services.AddPersistenceAdapter(builder.Configuration);
 builder.Services.AddSwaggerExtension();
 

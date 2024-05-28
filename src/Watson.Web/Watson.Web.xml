@@ -4,5 +4,12 @@
         <name>Watson.Web</name>
     </assembly>
     <members>
+        <member name="M:Watson.Web.Controllers.v1.ChatController.CreateChat(Watson.Application.Features.Chat.Commands.CreateChatSessionCommand)">
+            <summary>
+                Create a new chat session and populate it with the initial bot message.
+            </summary>
+            <param name="command">The necessary information to create a chat</param>
+            <returns code="200">Returns the new unique ID for the created chat session</returns>
+        </member>
     </members>
 </doc>

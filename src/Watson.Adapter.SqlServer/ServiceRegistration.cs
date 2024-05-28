@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Watson.Application.Interfaces;
 using Watson.Adapter.SqlServer.Contexts;
 using Watson.Adapter.SqlServer.Repositories;
+using Watson.Application.Interfaces.Repositories;
 
 namespace Watson.Adapter.SqlServer
 {
@@ -19,6 +20,7 @@ namespace Watson.Adapter.SqlServer
             #region Repositories
             services.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
+            services.AddTransient<IChatSessionRepository, ChatSessionRepository>();
             #endregion
         }
     }

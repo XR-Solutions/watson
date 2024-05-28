@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Watson.Core.Common;
+using Watson.Core.Entities;
 
 namespace Watson.Adapter.SqlServer.Contexts
 {
@@ -10,7 +11,9 @@ namespace Watson.Adapter.SqlServer.Contexts
             Database.Migrate();
         }
 
-        // TODO: place DbSets here
+        public virtual DbSet<ChatSession> ChatSessions { get; set; }
+        public virtual DbSet<ChatMessage> ChatMessages { get; set; }
+        public virtual DbSet<ChatCitation> ChatCitations { get; set; }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {
