@@ -17,8 +17,4 @@
     <ProjectReference Include="..\Watson.Adapter.SqlServer\Watson.Adapter.SqlServer.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\v1\" />
-  </ItemGroup>
-
 </Project>

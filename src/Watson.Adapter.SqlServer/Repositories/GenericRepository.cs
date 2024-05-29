@@ -8,14 +8,10 @@ using Watson.Application.Interfaces;
 
 namespace Watson.Adapter.SqlServer.Repositories
 {
-	public class GenericRepository<T> : IGenericRepository<T> where T : class
+	public class GenericRepository<T>(ApplicationDbContext dbContext)
+		: IGenericRepository<T> where T : class
 	{
-		private readonly ApplicationDbContext _dbContext;
-
-		public GenericRepository(ApplicationDbContext dbContext)
-		{
-			_dbContext = dbContext;
-		}
+		private readonly ApplicationDbContext _dbContext = dbContext;
 
 		public async Task<T> AddAsync(T entity)
 		{

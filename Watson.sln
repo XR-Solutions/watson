@@ -19,7 +19,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Watson.IntegrationTests", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Watson.UnitTests", "tests\Watson.UnitTests\Watson.UnitTests.csproj", "{13AA3384-0008-4FFA-B672-5734BC9FD0DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Watson.Mobile.Client", "src\Watson.Mobile.Client\Watson.Mobile.Client.csproj", "{5A3DA755-C587-4CF4-9968-4101937AF37B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Watson.Mobile.Client", "src\Watson.Mobile.Client\Watson.Mobile.Client.csproj", "{5A3DA755-C587-4CF4-9968-4101937AF37B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Watson.Adapter.Stub", "Watson.Adapter.Stub\Watson.Adapter.Stub.csproj", "{65E621DC-A435-49AC-9946-FF164166D542}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{5A3DA755-C587-4CF4-9968-4101937AF37B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A3DA755-C587-4CF4-9968-4101937AF37B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5A3DA755-C587-4CF4-9968-4101937AF37B}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{65E621DC-A435-49AC-9946-FF164166D542}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65E621DC-A435-49AC-9946-FF164166D542}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65E621DC-A435-49AC-9946-FF164166D542}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65E621DC-A435-49AC-9946-FF164166D542}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -69,6 +75,7 @@ Global
 		{467B8840-3192-45A6-BD78-4835F631F804} = {69B398DA-D7B5-4BA0-AF74-EA545E09B717}
 		{13AA3384-0008-4FFA-B672-5734BC9FD0DA} = {69B398DA-D7B5-4BA0-AF74-EA545E09B717}
 		{5A3DA755-C587-4CF4-9968-4101937AF37B} = {5159B531-5306-437B-B180-E480F4EF78A2}
+		{65E621DC-A435-49AC-9946-FF164166D542} = {5159B531-5306-437B-B180-E480F4EF78A2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BDFAF9E9-B98A-49BB-9DE8-845DA23296B7}

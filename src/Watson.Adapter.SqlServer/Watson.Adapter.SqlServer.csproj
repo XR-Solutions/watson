@@ -24,4 +24,8 @@
     <ProjectReference Include="..\Watson.Core\Watson.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Models\" />
+  </ItemGroup>
+
 </Project>

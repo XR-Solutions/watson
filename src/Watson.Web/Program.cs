@@ -1,7 +1,13 @@
-using Watson.Web.Extensions;
-using Watson.Application;
-using Watson.Adapter.SqlServer;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using System.Text.Json.Serialization;
+using Watson.Adapter.SqlServer;
+using Watson.Adapter.SqlServer.Repositories;
+using Watson.Application;
+using Watson.Core.Ports;
+using Watson.Web.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,7 +19,20 @@ builder.Services.AddPersistenceAdapter(builder.Configuration);
 builder.Services.AddSwaggerExtension();
 
 builder.Services.AddControllers().AddJsonOptions(o =>
-    o.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
+	o.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
+
+
+//builder.Services.AddMediatR(cfg =>
+//	 cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));
+
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<Program>());
+
+builder.Services.AddTransient<INoteRepository, NoteRepository>();
+
+// builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<CreateNoteCommandHandler>());
+
+
+
 
 builder.Services.AddApiVersioningExtension();
 builder.Services.AddVersioningPrefix();
@@ -24,8 +43,8 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseDeveloperExceptionPage();
-    app.UseSwaggerExtension();
+	app.UseDeveloperExceptionPage();
+	app.UseSwaggerExtension();
 }
 
 app.UseHttpsRedirection();
@@ -38,3 +57,5 @@ app.UseHealthChecks("/health");
 app.MapControllers();
 
 app.Run();
+
+public partial class Program { }
