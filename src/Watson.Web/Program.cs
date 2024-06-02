@@ -1,10 +1,12 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Text.Json.Serialization;
 using Watson.Adapter.SqlServer;
 using Watson.Adapter.SqlServer.Repositories;
+using Watson.Adapter.Stub.Repositories;
 using Watson.Application;
 using Watson.Core.Ports;
 using Watson.Web.Extensions;
@@ -22,17 +24,19 @@ builder.Services.AddControllers().AddJsonOptions(o =>
 	o.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
 
-//builder.Services.AddMediatR(cfg =>
-//	 cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));
-
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<Program>());
 
-builder.Services.AddTransient<INoteRepository, NoteRepository>();
 
-// builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<CreateNoteCommandHandler>());
+bool useStubs = builder.Configuration.GetValue<bool>("UseStubs");
 
-
-
+if (useStubs)
+{
+	builder.Services.AddTransient<INoteRepository, NoteRepositoryStub>();
+}
+else
+{
+	builder.Services.AddTransient<INoteRepository, NoteRepository>();
+}
 
 builder.Services.AddApiVersioningExtension();
 builder.Services.AddVersioningPrefix();

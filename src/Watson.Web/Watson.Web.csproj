@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Watson.Adapter.Stub\Watson.Adapter.Stub.csproj" />
     <ProjectReference Include="..\Watson.Application\Watson.Application.csproj" />
     <ProjectReference Include="..\Watson.Adapter.SqlServer\Watson.Adapter.SqlServer.csproj" />
   </ItemGroup>

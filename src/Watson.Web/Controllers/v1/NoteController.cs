@@ -15,13 +15,25 @@ namespace Watson.Web.Controllers.v1
 		[ProducesResponseType(typeof(Created), StatusCodes.Status201Created)]
 		[ProducesResponseType(typeof(NotFoundResult), StatusCodes.Status404NotFound)]
 		public async Task<ActionResult> CreateNote(
-		[FromBody] Note note
+			[FromBody] Note note
 		)
 		{
 			var command = new CreateNoteCommand { Note = note };
-			var result = Mediator.Send(command);
+			var result = await Mediator.Send(command);
 
 			return Created("note", result);
+		}
+
+		[HttpGet]
+		[ProducesResponseType(typeof(Ok), StatusCodes.Status200OK)]
+		[ProducesResponseType(typeof(NotFoundResult), StatusCodes.Status404NotFound)]
+		public async Task<ActionResult> GetAllNotes(
+		)
+		{
+			var command = new GetAllNotesCommand { };
+			var result = await Mediator.Send(command);
+
+			return Ok(result);
 		}
 	}
 }
