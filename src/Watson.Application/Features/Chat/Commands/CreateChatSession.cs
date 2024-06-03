@@ -2,7 +2,7 @@
 using FluentValidation;
 using MediatR;
 using Watson.Application.Interfaces.Repositories;
-using Watson.Application.Interfaces.Servcies;
+using Watson.Application.Interfaces.Services;
 using Watson.Application.Wrappers;
 using Watson.Core.Entities;
 
@@ -10,7 +10,7 @@ namespace Watson.Application.Features.Chat.Commands
 {
     public class CreateChatSessionCommand : IRequest<Response<Guid>>
     {
-        public string Title {  get; set; }
+        public string Title { get; set; } = "";
     }
 
     public class CreateChatSessionCommandHandler : IRequestHandler<CreateChatSessionCommand, Response<Guid>>

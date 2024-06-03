@@ -13,7 +13,7 @@ namespace Watson.Adapter.SqlServer.Contexts
 
         public virtual DbSet<ChatSession> ChatSessions { get; set; }
         public virtual DbSet<ChatMessage> ChatMessages { get; set; }
-        public virtual DbSet<ChatCitation> ChatCitations { get; set; }
+        //public virtual DbSet<ChatCitation> ChatCitations { get; set; }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {

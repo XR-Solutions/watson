@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Watson.Adapter.Shared.Services;
-using Watson.Application.Interfaces.Servcies;
+using Watson.Application.Interfaces.Services;
 
 namespace Watson.Adapter.Shared
 {

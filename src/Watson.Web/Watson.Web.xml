@@ -11,5 +11,12 @@
             <param name="command">The necessary information to create a chat</param>
             <returns code="200">Returns the new unique ID for the created chat session</returns>
         </member>
+        <member name="M:Watson.Web.Controllers.v1.ChatController.SendMessage(Watson.Application.Features.Chat.Commands.SendChatMessageCommand)">
+            <summary>
+                Send a new chat message in an existing session and get a response.
+            </summary>
+            <param name="command">The necessary infromation to send a chat message in a session.</param>
+            <returns code="200">Returns the response from the generative model</returns>
+        </member>
     </members>
 </doc>

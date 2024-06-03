@@ -20,5 +20,16 @@ namespace Watson.Web.Controllers.v1
         {
             return Ok(await Mediator.Send(command));
         }
+
+        /// <summary>
+        ///     Send a new chat message in an existing session and get a response.
+        /// </summary>
+        /// <param name="command">The necessary infromation to send a chat message in a session.</param>
+        /// <returns code="200">Returns the response from the generative model</returns>
+        [HttpPost("message")]
+        public async Task<IActionResult> SendMessage(SendChatMessageCommand command)
+        {
+            return Ok(await Mediator.Send(command));
+        }
     }
 }

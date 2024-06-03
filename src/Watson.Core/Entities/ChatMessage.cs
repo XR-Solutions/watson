@@ -51,6 +51,7 @@ namespace Watson.Core.Entities
         /// <summary>
         /// Citations used in this message
         /// </summary>
-        public IEnumerable<ChatCitation> Citations { get; set; } = Enumerable.Empty<ChatCitation>();
+        /// TODO: restore
+        //public IEnumerable<ChatCitation> Citations { get; set; } = Enumerable.Empty<ChatCitation>();
     }
 }

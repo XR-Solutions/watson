@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\Watson.Application\Watson.Application.csproj" />
+    <ProjectReference Include="..\Watson.Application\Watson.Application.csproj" />
   </ItemGroup>
 
 </Project>
