@@ -4,7 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Watson.Web.Controllers
 {
-	[Route("api/v{version:apiVersion}/[controller]")]
+	[Route("api/[controller]")]
 	public class BaseApiController : ControllerBase
 	{
 		private IMediator _mediator;

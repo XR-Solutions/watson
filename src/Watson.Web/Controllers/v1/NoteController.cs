@@ -8,10 +8,11 @@ using Watson.Core.Entities;
 namespace Watson.Web.Controllers.v1
 {
 	[ApiController]
-	[Route("api/v1/[controller]")]
+	//[Route("api/v1/[controller]")]
 	public class NoteController : BaseApiController
 	{
 		[HttpPost]
+		[Route("/note")]
 		[ProducesResponseType(typeof(Created), StatusCodes.Status201Created)]
 		[ProducesResponseType(typeof(NotFoundResult), StatusCodes.Status404NotFound)]
 		public async Task<ActionResult> CreateNote(
@@ -25,6 +26,7 @@ namespace Watson.Web.Controllers.v1
 		}
 
 		[HttpGet]
+		[Route("/notes")]
 		[ProducesResponseType(typeof(Ok), StatusCodes.Status200OK)]
 		[ProducesResponseType(typeof(NotFoundResult), StatusCodes.Status404NotFound)]
 		public async Task<ActionResult> GetAllNotes(
