@@ -42,7 +42,13 @@ namespace Watson.Adapter.Stub.Repositories
 
 		public Task UpdateAsync(Core.Entities.Note entity)
 		{
-			throw new NotImplementedException();
+			var existingNote = notes.Find(note => note.Guid == entity.Guid);
+			if (existingNote != null)
+			{
+				int index = notes.IndexOf(existingNote);
+				notes[index] = entity;
+			}
+			return Task.CompletedTask;
 		}
 	}
 }

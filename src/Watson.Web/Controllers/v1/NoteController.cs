@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Asp.Versioning;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -8,11 +9,11 @@ using Watson.Core.Entities;
 namespace Watson.Web.Controllers.v1
 {
 	[ApiController]
-	//[Route("api/v1/[controller]")]
+	[Route("[controller]")]
+	[ApiVersion("1.0")]
 	public class NoteController : BaseApiController
 	{
 		[HttpPost]
-		[Route("/note")]
 		[ProducesResponseType(typeof(Created), StatusCodes.Status201Created)]
 		[ProducesResponseType(typeof(NotFoundResult), StatusCodes.Status404NotFound)]
 		public async Task<ActionResult> CreateNote(
@@ -25,14 +26,27 @@ namespace Watson.Web.Controllers.v1
 			return Created("note", result);
 		}
 
+		[HttpPut]
+		[ProducesResponseType(typeof(Ok), StatusCodes.Status200OK)]
+		[ProducesResponseType(typeof(NotFoundResult), StatusCodes.Status404NotFound)]
+		public async Task<ActionResult> UpdateNote(
+			[FromBody] Note note
+		)
+		{
+			var command = new UpdateNoteCommand { Note = note };
+			var result = await Mediator.Send(command);
+
+			return Ok(result);
+		}
+
 		[HttpGet]
-		[Route("/notes")]
+		[Route("all")]
 		[ProducesResponseType(typeof(Ok), StatusCodes.Status200OK)]
 		[ProducesResponseType(typeof(NotFoundResult), StatusCodes.Status404NotFound)]
 		public async Task<ActionResult> GetAllNotes(
 		)
 		{
-			var command = new GetAllNotesCommand { };
+			var command = new GetAllNotesQuery { };
 			var result = await Mediator.Send(command);
 
 			return Ok(result);

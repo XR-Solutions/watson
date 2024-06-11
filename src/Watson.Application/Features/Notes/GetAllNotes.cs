@@ -8,15 +8,15 @@ using Watson.Core.Ports;
 
 namespace Watson.Application.Features.Notes
 {
-	public class GetAllNotesCommand : IRequest<Response<IReadOnlyList<Note>>>
+	public class GetAllNotesQuery : IRequest<Response<IReadOnlyList<Note>>>
 	{
 
 	}
 
-	public class GetAllNotesCommandHandler(INoteRepository noteRepository)
-		: IRequestHandler<GetAllNotesCommand, Response<IReadOnlyList<Note>>>
+	public class GetAllNotesQueryHandler(INoteRepository noteRepository)
+		: IRequestHandler<GetAllNotesQuery, Response<IReadOnlyList<Note>>>
 	{
-		public async Task<Response<IReadOnlyList<Note>>> Handle(GetAllNotesCommand request, CancellationToken cancellationToken)
+		public async Task<Response<IReadOnlyList<Note>>> Handle(GetAllNotesQuery request, CancellationToken cancellationToken)
 		{
 			var notes = await noteRepository.GetAllAsync();
 
