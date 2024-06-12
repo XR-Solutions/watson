@@ -15,8 +15,8 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <StackLayout Padding="10">
-                        <Label Text="{Binding Name}" FontSize="20" FontAttributes="Bold"/>
-                        <Label Text="{Binding Description}" FontSize="14"/>
+                        <Entry Text="{Binding Name}" Placeholder="Enter Name" Completed="OnNameCompleted"/>
+                        <Entry Text="{Binding Description}" Placeholder="Enter Description" Completed="OnDescriptionCompleted"/>
                     </StackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
