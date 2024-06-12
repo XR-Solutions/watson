@@ -5,6 +5,8 @@
 		public MainView()
 		{
 			InitializeComponent();
+
+
 		}
 	}
 }
