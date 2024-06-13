@@ -1,6 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.SemanticKernel;
+using Microsoft.SemanticKernel.Connectors.OpenAI;
 using Watson.Adapter.OpenAI.Options;
+using Watson.Adapter.OpenAI.Plugins;
 
 namespace Watson.Adapter.OpenAI.Extensions
 {
@@ -11,8 +13,16 @@ namespace Watson.Adapter.OpenAI.Extensions
             var builder = Kernel.CreateBuilder()
                 .AddOpenAIChatCompletion(openAISettings.ModelType, openAISettings.ApiKey);
 
-            #region Plugins
 
+            OpenAIPromptExecutionSettings promptExecutionSettings = new()
+            { 
+                ToolCallBehavior = ToolCallBehavior.AutoInvokeKernelFunctions
+            };
+
+            services.AddSingleton(promptExecutionSettings) ;
+
+            #region Plugins
+            builder.Plugins.AddFromType<TimePlugin>();
             #endregion
 
             Kernel kernel = builder.Build();

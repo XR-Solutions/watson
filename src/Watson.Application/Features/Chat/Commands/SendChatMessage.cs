@@ -37,7 +37,7 @@ namespace Watson.Application.Features.Chat.Commands
         public async Task<Response<SendChatMessageResponse>> Handle(SendChatMessageCommand request, CancellationToken cancellationToken)
         {
             // TODO: implement this method, this is pure testing
-            var modelResponse = await _aiChatService.GetResponseAsync(request.Message);
+            var modelResponse = await _aiChatService.InvokePromptAsync(request.Message);
             var response = new SendChatMessageResponse() { Message = modelResponse };
             return new Response<SendChatMessageResponse>(response);
         }
