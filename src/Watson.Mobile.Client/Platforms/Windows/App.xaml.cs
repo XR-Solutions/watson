@@ -16,6 +16,9 @@ namespace Watson.Mobile.Client.WinUI
         /// </summary>
         public App()
         {
+            if (Auth0.OidcClient.Platforms.Windows.Activator.Default.CheckRedirectionActivation())
+                return;
+
             this.InitializeComponent();
         }
 

@@ -49,6 +49,14 @@
         Glyph="&#x2b;"
         Size="18"
         Color="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Primary}}" />
+    
+    <FontImageSource
+        x:Key="LoginIconImageSource"
+        FontAutoScalingEnabled="True"
+        FontFamily="FontAwesome-Solid"
+        Glyph="&#xf2f6;"
+        Size="18"
+        Color="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Primary}}" />
 
     <!-- End of fonts -->
     

@@ -6,5 +6,9 @@
         {
             InitializeComponent();
         }
+
+        public async void AddDevice(object sender, EventArgs args)
+        {
+        }
     }
 }

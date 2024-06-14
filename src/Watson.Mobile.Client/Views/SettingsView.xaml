@@ -1,38 +1,78 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<views:ContentPageBase xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:views="clr-namespace:Watson.Mobile.Client.Views"
-             x:Class="Watson.Mobile.Client.Views.SettingsView">
+             xmlns:generic="clr-namespace:Watson.Mobile.Client.Components.Generic"
+             x:Class="Watson.Mobile.Client.Views.SettingsView"
+             xmlns:viewmodel="clr-namespace:Watson.Mobile.Client.ViewModels"
+             x:DataType="viewmodel:SettingsViewModel">
 
     <ScrollView>
         <VerticalStackLayout
             Padding="15,0"
             Spacing="15">
 
-            <VerticalStackLayout
-                Margin="0,15"
-                Spacing="10">
+            <generic:If Condition="{Binding IsLoggedIn}" >
+                <generic:If.True>
+                    <VerticalStackLayout
+                            Margin="0,15"
+                            Spacing="10">
 
-                <BoxView
-                WidthRequest="80"
-                HeightRequest="80"
-                CornerRadius="9999"
-                Margin="0,10"
-                BackgroundColor="{StaticResource Primary}"/>
+                        <Frame
+                            HeightRequest="80"
+                            WidthRequest="80"
+                            CornerRadius="999"
+                            Margin="0,10">
+                            
+                            <Image 
+                                WidthRequest="80"
+                                HeightRequest="80"
+                                BackgroundColor="{StaticResource Primary}"
+                                Source="{Binding User.ImageUrl}" />
+                            
+                        </Frame>
 
-                <Label 
-                Text="Jonathan Doever"
-                HorizontalTextAlignment="Center"
-                FontSize="25"
-                FontAttributes="Bold" />
+                        <Label 
+                            Text="{Binding User.Name}"
+                            HorizontalTextAlignment="Center"
+                            FontSize="25"
+                            FontAttributes="Bold" />
 
-                <Label 
-                Text="john.doe@example.com" 
-                HorizontalTextAlignment="Center" 
-                FontSize="Small" 
-                TextColor="{StaticResource Gray500}" />
+                        <Label 
+                            Text="{Binding User.Email}" 
+                            HorizontalTextAlignment="Center" 
+                            FontSize="Small" 
+                            TextColor="{StaticResource Gray500}" />
 
-            </VerticalStackLayout>
+                    </VerticalStackLayout>
+                </generic:If.True>
+
+                <generic:If.False>
+                    <VerticalStackLayout
+                            Padding="15,25,15,50"
+                            Spacing="15">
+                        
+                        <Image Source="Illustrations/glasses_vr.png" WidthRequest="100" HeightRequest="100" Margin="0,10" />
+                        <Label Text="You're not signed in" FontSize="25" FontAttributes="Bold" HorizontalOptions="Center" />
+
+                        <StackLayout>
+                            <Label 
+                                Text="Sign in to make use of more features and access the Copilot and Crime Scene data" 
+                                FontSize="Small"
+                                HorizontalTextAlignment="Center"/>
+                        </StackLayout>
+
+                        <Button 
+                            Text="Log in" 
+                            CornerRadius="999" 
+                            HorizontalOptions="Center"
+                            Margin="0, 15"
+                            ImageSource="{StaticResource LoginIconImageSource}"
+                            Command="{Binding LoginCommand}" />
+                        
+                    </VerticalStackLayout>
+                </generic:If.False>
+            </generic:If>
 
             <Grid ColumnSpacing="15">
                 <Grid.RowDefinitions>
@@ -72,7 +112,7 @@
                     <Button Text="Help" BackgroundColor="#121212" HorizontalOptions="StartAndExpand" />
                     <Button Text="Taal" BackgroundColor="#121212" HorizontalOptions="StartAndExpand" />
                     <Button Text="Uiterlijk" BackgroundColor="#121212" HorizontalOptions="StartAndExpand" />
-                    <Button Text="Log uit" BackgroundColor="#121212" HorizontalOptions="StartAndExpand" />
+                    <Button Text="Log uit" BackgroundColor="#121212" HorizontalOptions="StartAndExpand" Command="{Binding LogOutCommand}" IsVisible="{Binding IsLoggedIn}" />
 
                 </VerticalStackLayout>
             </Frame>
@@ -101,4 +141,4 @@
         </VerticalStackLayout>
     </ScrollView>
 
-</ContentPage>
+</views:ContentPageBase>
