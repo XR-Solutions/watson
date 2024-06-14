@@ -15,7 +15,7 @@ namespace Watson.Mobile.Client.Services
 			var handler = new BypassSslValidationHandler();
 			_httpClient = new HttpClient(handler)
 			{
-				BaseAddress = new Uri("http://192.168.178.61/")
+				BaseAddress = new Uri("http://192.168.30.24/")
 			};
 		}
 
@@ -42,7 +42,7 @@ namespace Watson.Mobile.Client.Services
 
 			throw new HttpRequestException($"Unexpected status code: {response.StatusCode}");
 		}
-
+		
 		public async Task<bool> UpdateNoteAsync(Note updatedNote)
 		{
 			var jsonData = JsonConvert.SerializeObject(updatedNote);
