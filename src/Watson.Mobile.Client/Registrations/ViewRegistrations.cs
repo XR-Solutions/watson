@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Watson.Mobile.Client.Views;
+﻿using Watson.Mobile.Client.Views;
 
 namespace Watson.Mobile.Client.Extensions
 {
@@ -11,7 +6,10 @@ namespace Watson.Mobile.Client.Extensions
     {
         public static MauiAppBuilder RegisterViews(this MauiAppBuilder builder)
         {
-            builder.Services.AddTransient<MainView>();
+            builder.Services.AddTransient<CompanionView>();
+            builder.Services.AddTransient<SettingsView>();
+            builder.Services.AddTransient<CopilotView>();
+            builder.Services.AddTransient<ReportView>();
 
             return builder;
         }

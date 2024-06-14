@@ -4,19 +4,40 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Watson.Mobile.Client"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:views="clr-namespace:Watson.Mobile.Client.Views"
     Shell.FlyoutBehavior="Disabled"
     Title="Watson Companion App">
 
-    <ShellContent
-        ContentTemplate="{DataTemplate views:MainView}"
-        Route="Main" />
 
+    <Shell.Behaviors>
+        <toolkit:StatusBarBehavior StatusBarColor="#000000" StatusBarStyle="LightContent" />
+    </Shell.Behaviors>
 
     <TabBar>
-        <Tab Title="Home">
-            <ShellContent ContentTemplate="{DataTemplate views:MainView}" />
-        </Tab>
+        <ShellContent
+            Title="Companion"
+            ContentTemplate="{DataTemplate views:CompanionView}"
+            Icon="{StaticResource CompanionIconImageSource}"
+            Route="Companion" />
+        
+        <ShellContent
+            Title="Rapportage"
+            ContentTemplate="{DataTemplate views:ReportView}"
+            Icon="{StaticResource ReportIconImageSource}"
+            Route="Report" />
+
+        <ShellContent
+            Title="Copilot"
+            ContentTemplate="{DataTemplate views:CopilotView}"
+            Icon="{StaticResource CopilotIconImageSource}"
+            Route="Copilot" />
+
+        <ShellContent
+            Title="Instellingen"
+            ContentTemplate="{DataTemplate views:SettingsView}"
+            Icon="{StaticResource SettingsIconImageSource}"
+            Route="Settings" />
     </TabBar>
 
 </Shell>

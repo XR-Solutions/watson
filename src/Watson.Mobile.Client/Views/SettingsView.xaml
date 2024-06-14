@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:Watson.Mobile.Client.Views"
+             x:Class="Watson.Mobile.Client.Views.SettingsView">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="15,0"
+            Spacing="15">
+
+            <VerticalStackLayout
+                Margin="0,15"
+                Spacing="10">
+
+                <BoxView
+                WidthRequest="80"
+                HeightRequest="80"
+                CornerRadius="9999"
+                Margin="0,10"
+                BackgroundColor="{StaticResource Primary}"/>
+
+                <Label 
+                Text="Jonathan Doever"
+                HorizontalTextAlignment="Center"
+                FontSize="25"
+                FontAttributes="Bold" />
+
+                <Label 
+                Text="john.doe@example.com" 
+                HorizontalTextAlignment="Center" 
+                FontSize="Small" 
+                TextColor="{StaticResource Gray500}" />
+
+            </VerticalStackLayout>
+
+            <Grid ColumnSpacing="15">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Frame
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    HeightRequest="150"
+                    Padding="5"
+                    BackgroundColor="#121212">
+                    <Label Text="Placeholder 1"/>
+                </Frame>
+
+                <Frame
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Padding="5"
+                    HeightRequest="150"
+                    BackgroundColor="#121212">
+                    <Label Text="Placeholder 2"/>
+
+                </Frame>
+
+            </Grid>
+
+            <Frame
+                Padding="5"
+                BackgroundColor="#121212">
+                <VerticalStackLayout
+                    Spacing="5">
+
+                    <Button Text="Help" BackgroundColor="#121212" HorizontalOptions="StartAndExpand" />
+                    <Button Text="Taal" BackgroundColor="#121212" HorizontalOptions="StartAndExpand" />
+                    <Button Text="Uiterlijk" BackgroundColor="#121212" HorizontalOptions="StartAndExpand" />
+                    <Button Text="Log uit" BackgroundColor="#121212" HorizontalOptions="StartAndExpand" />
+
+                </VerticalStackLayout>
+            </Frame>
+
+            <Frame
+                Padding="5"
+                BackgroundColor="#121212">
+                <VerticalStackLayout
+                    Spacing="5">
+
+                    <Button Text="GitHub" BackgroundColor="#121212" HorizontalOptions="StartAndExpand" />
+                    <Button Text="App info" BackgroundColor="#121212" HorizontalOptions="StartAndExpand" />
+
+                </VerticalStackLayout>
+            </Frame>
+
+
+            <VerticalStackLayout
+                Padding="15"
+                Spacing="5">
+
+                <Label Text="1.0.0" HorizontalOptions="Center" FontSize="Small" TextColor="{StaticResource Gray500}" /> <!-- TODO: add real version number -->
+                <Label Text="Watson - Mobile Companion App" HorizontalOptions="Center" FontSize="Small" TextColor="{StaticResource Gray500}" />
+
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

@@ -4,7 +4,7 @@
     {
         public async Task InitializeAsync()
         {
-            await NavigateToAsync("//Main");
+            await NavigateToAsync("//Companion");
         }
 
         public Task NavigateToAsync(string route, IDictionary<string, object> routeParameters = null)
