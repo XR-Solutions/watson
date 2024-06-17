@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using QuestPDF.Infrastructure;
 using System.Text.Json.Serialization;
 using Watson.Adapter.SqlServer;
 using Watson.Adapter.SqlServer.Repositories;
@@ -11,6 +12,8 @@ using Watson.Application;
 using Watson.Core.Ports;
 using Watson.Web.Extensions;
 using Watson.Web.Hubs;
+
+QuestPDF.Settings.License = LicenseType.Community;
 
 var builder = WebApplication.CreateBuilder(args);
 
