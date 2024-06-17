@@ -4,7 +4,10 @@
              xmlns:views="clr-namespace:Watson.Mobile.Client.Views"
              x:Class="Watson.Mobile.Client.Views.CompanionView"
              xmlns:viewmodel="clr-namespace:Watson.Mobile.Client.ViewModels"
-             x:DataType="viewmodel:CompanionViewModel">
+             x:DataType="viewmodel:CompanionViewModel"
+             xmlns:droid="clr-namespace:CommunityToolkit.Maui.PlatformConfiguration.AndroidSpecific;assembly=CommunityToolkit.Maui"
+             droid:NavigationBar.Color="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource BlackSecondary}}"
+             droid:NavigationBar.Style="{AppThemeBinding Light=DarkContent, Dark=LightContent}">
 
     <ScrollView>
         <VerticalStackLayout

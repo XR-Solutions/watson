@@ -87,7 +87,8 @@
                     Grid.Column="0"
                     HeightRequest="150"
                     Padding="5"
-                    BackgroundColor="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource BlackTertiary}}">
+                    BorderColor="Transparent"
+                    BackgroundColor="{AppThemeBinding Light={StaticResource Gray50}, Dark={StaticResource BlackTertiary}}">
                     <Label Text="Placeholder 1"/>
                 </Frame>
 
@@ -96,7 +97,8 @@
                     Grid.Column="1"
                     Padding="5"
                     HeightRequest="150"
-                    BackgroundColor="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource BlackTertiary}}">
+                    BorderColor="Transparent"
+                    BackgroundColor="{AppThemeBinding Light={StaticResource Gray50}, Dark={StaticResource BlackTertiary}}">
                     <Label Text="Placeholder 2"/>
 
                 </Frame>
@@ -105,26 +107,28 @@
 
             <Frame
                 Padding="5"
-                BackgroundColor="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource BlackTertiary}}">
+                BorderColor="Transparent"
+                BackgroundColor="{AppThemeBinding Light={StaticResource Gray50}, Dark={StaticResource BlackTertiary}}">
                 <VerticalStackLayout
                     Spacing="5">
 
-                    <Button Text="Help" BackgroundColor="#121212" HorizontalOptions="StartAndExpand" />
-                    <Button Text="Taal" BackgroundColor="#121212" HorizontalOptions="StartAndExpand" />
-                    <Button Text="Uiterlijk" BackgroundColor="#121212" HorizontalOptions="StartAndExpand" />
-                    <Button Text="Log uit" BackgroundColor="#121212" HorizontalOptions="StartAndExpand" Command="{Binding LogOutCommand}" IsVisible="{Binding IsLoggedIn}" />
+                    <Button Text="Help" BackgroundColor="Transparent" HorizontalOptions="StartAndExpand" />
+                    <Button Text="Taal" BackgroundColor="Transparent" HorizontalOptions="StartAndExpand" />
+                    <Button Text="Uiterlijk" BackgroundColor="Transparent" HorizontalOptions="StartAndExpand" />
+                    <Button Text="Log uit" BackgroundColor="Transparent" HorizontalOptions="StartAndExpand" Command="{Binding LogOutCommand}" IsVisible="{Binding IsLoggedIn}" />
 
                 </VerticalStackLayout>
             </Frame>
 
             <Frame
                 Padding="5"
-                BackgroundColor="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource BlackTertiary}}">
+                BorderColor="Transparent"
+                BackgroundColor="{AppThemeBinding Light={StaticResource Gray50}, Dark={StaticResource BlackTertiary}}">
                 <VerticalStackLayout
                     Spacing="5">
 
-                    <Button Text="GitHub" BackgroundColor="#121212" HorizontalOptions="StartAndExpand" />
-                    <Button Text="App info" BackgroundColor="#121212" HorizontalOptions="StartAndExpand" />
+                    <Button Text="GitHub" BackgroundColor="Transparent" HorizontalOptions="StartAndExpand" />
+                    <Button Text="App info" BackgroundColor="Transparent" HorizontalOptions="StartAndExpand" />
 
                 </VerticalStackLayout>
             </Frame>

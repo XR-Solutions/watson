@@ -14,7 +14,8 @@
             <Frame 
                 CornerRadius="15"
                 Margin="0"
-                Background="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource BlackTertiary}}"
+                BorderColor="Transparent"
+                Background="{AppThemeBinding Light={StaticResource Gray50}, Dark={StaticResource BlackTertiary}}"
                 >
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer Tapped="AddHoloLensTwo" />
@@ -35,7 +36,8 @@
             <Frame 
                 CornerRadius="15"
                 Margin="0"
-                Background="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource BlackTertiary}}">
+                BorderColor="Transparent"
+                Background="{AppThemeBinding Light={StaticResource Gray50}, Dark={StaticResource BlackTertiary}}">
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer Tapped="AddMetaQuestTwo" />
                 </Frame.GestureRecognizers>
