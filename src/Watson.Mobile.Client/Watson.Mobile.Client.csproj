@@ -83,6 +83,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Views\AddHoloLensView.xaml.cs">
+	    <DependentUpon>AddHoloLensView.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\AddDeviceView.xaml.cs">
+	    <DependentUpon>AddDeviceView.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Views\ReportView.xaml.cs">
 	    <DependentUpon>ReportView.xaml</DependentUpon>
 	  </Compile>
@@ -98,6 +104,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="Views\AddHoloLensView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\AddDeviceView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\ReportView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -110,6 +122,10 @@
 	  <MauiXaml Update="Views\CompanionView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Resources\Images\Devices\" />
 	</ItemGroup>
 
 	<ProjectExtensions><VisualStudio><UserProperties XamarinHotReloadDebuggerTimeoutExceptionWatsonMobileClientHideInfoBar="True" /></VisualStudio></ProjectExtensions>

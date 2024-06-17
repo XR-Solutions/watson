@@ -7,6 +7,7 @@ namespace Watson.Mobile.Client.Extensions
         public static MauiAppBuilder RegisterViewModels(this MauiAppBuilder builder)
         {
             builder.Services.AddSingleton<SettingsViewModel>();
+            builder.Services.AddSingleton<CompanionViewModel>();
 
             return builder;
         }

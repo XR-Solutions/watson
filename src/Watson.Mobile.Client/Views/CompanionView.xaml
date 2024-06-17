@@ -2,7 +2,9 @@
 <views:ContentPageBase xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:views="clr-namespace:Watson.Mobile.Client.Views"
-             x:Class="Watson.Mobile.Client.Views.CompanionView">
+             x:Class="Watson.Mobile.Client.Views.CompanionView"
+             xmlns:viewmodel="clr-namespace:Watson.Mobile.Client.ViewModels"
+             x:DataType="viewmodel:CompanionViewModel">
 
     <ScrollView>
         <VerticalStackLayout
@@ -27,9 +29,11 @@
                 HorizontalOptions="Center"
                 ImageSource="{StaticResource PlusIconImageSource}"
                 ContentLayout="Left, 10"
-                Clicked="AddDevice" />
+                Command="{Binding AddNewDeviceCommand}" />
 
         </VerticalStackLayout>
     </ScrollView>
+    
+    
 
 </views:ContentPageBase>

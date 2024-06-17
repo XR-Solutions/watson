@@ -10,6 +10,8 @@ namespace Watson.Mobile.Client.Extensions
             builder.Services.AddTransient<SettingsView>();
             builder.Services.AddTransient<CopilotView>();
             builder.Services.AddTransient<ReportView>();
+            builder.Services.AddTransient<AddDeviceView>();
+            builder.Services.AddTransient<AddHoloLensView>();
 
             return builder;
         }

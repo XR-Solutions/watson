@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:Watson.Mobile.Client.Views"
+             x:Class="Watson.Mobile.Client.Views.AddDeviceView"
+             Title="Apparaat toevoegen">
+
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="20,25"
+            Spacing="15">
+
+            <Frame 
+                CornerRadius="15"
+                Margin="0"
+                Background="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource BlackTertiary}}"
+                >
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="AddHoloLensTwo" />
+                </Frame.GestureRecognizers>
+                <FlexLayout
+                    AlignItems="Center"
+                    JustifyContent="SpaceBetween">
+
+                    <Label 
+                        Text="Microsoft HoloLens 2"
+                        FontAttributes="Bold"
+                        WidthRequest="175"
+                        FontSize="Large" />
+                    <Image Source="Devices/microsoft_hololens_2.png" WidthRequest="100" HeightRequest="100" Margin="0,10" />
+                </FlexLayout>
+            </Frame>
+
+            <Frame 
+                CornerRadius="15"
+                Margin="0"
+                Background="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource BlackTertiary}}">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="AddMetaQuestTwo" />
+                </Frame.GestureRecognizers>
+                <FlexLayout
+                    AlignItems="Center"
+                    JustifyContent="SpaceBetween">
+
+                    <Label 
+                        Text="Meta Quest 2"
+                        FontAttributes="Bold"
+                        WidthRequest="175"
+                        FontSize="Large" />
+                    <Image Source="Devices/meta_quest_2.png" WidthRequest="100" HeightRequest="100" Margin="0,10" />
+                </FlexLayout>
+            </Frame>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
