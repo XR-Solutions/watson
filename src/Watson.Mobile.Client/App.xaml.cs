@@ -1,12 +1,14 @@
-﻿namespace Watson.Mobile.Client
-{
-    public partial class App : Application
-    {
-        public App()
-        {
-            InitializeComponent();
+﻿using Watson.Mobile.Client.Views;
 
-            MainPage = new AppShell();
-        }
-    }
+namespace Watson.Mobile.Client
+{
+	public partial class App : Application
+	{
+		public App()
+		{
+			InitializeComponent();
+
+			MainPage = new AppFlyout();
+		}
+	}
 }
