@@ -21,7 +21,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Watson.UnitTests", "tests\W
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Watson.Mobile.Client", "src\Watson.Mobile.Client\Watson.Mobile.Client.csproj", "{5A3DA755-C587-4CF4-9968-4101937AF37B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Watson.Adapter.Stub", "Watson.Adapter.Stub\Watson.Adapter.Stub.csproj", "{65E621DC-A435-49AC-9946-FF164166D542}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Watson.Adapter.Stub", "src\Watson.Adapter.Stub\Watson.Adapter.Stub.csproj", "{65E621DC-A435-49AC-9946-FF164166D542}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
