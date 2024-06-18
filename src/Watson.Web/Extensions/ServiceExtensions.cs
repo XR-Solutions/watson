@@ -38,27 +38,27 @@ namespace Watson.Web.Extensions
 					"To get a token you can use the login endpoint from the account controller.",
 				});
 
-				c.AddSecurityRequirement(new OpenApiSecurityRequirement
-				{
-					{
-						new OpenApiSecurityScheme
-						{
-							Reference = new OpenApiReference
-							{
-								Type = ReferenceType.SecurityScheme,
-								Id = "Bearer",
-							},
-							Scheme = "Bearer",
-							Name = "Bearer",
-							In = ParameterLocation.Header,
-						}, new List<string>()
-					},
-				});
+				//	c.AddSecurityRequirement(new OpenApiSecurityRequirement
+				//	{
+				//		{
+				//			new OpenApiSecurityScheme
+				//			{
+				//				Reference = new OpenApiReference
+				//				{
+				//					Type = ReferenceType.SecurityScheme,
+				//					Id = "Bearer",
+				//				},
+				//				Scheme = "Bearer",
+				//				Name = "Bearer",
+				//				In = ParameterLocation.Header,
+				//			}, new List<string>()
+				//		},
+				//	});
 
-				var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-				var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+				//	var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+				//	var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
 
-				c.IncludeXmlComments(xmlPath);
+				//	c.IncludeXmlComments(xmlPath);
 			});
 		}
 		public static void AddCorsExtension(this IServiceCollection services, IConfiguration configuration)

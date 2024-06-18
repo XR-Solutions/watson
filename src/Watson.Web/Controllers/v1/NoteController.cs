@@ -5,13 +5,14 @@ using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using Watson.Application.Features.Notes;
 using Watson.Core.Entities;
+using Watson.Core.Ports;
 
 namespace Watson.Web.Controllers.v1
 {
 	[ApiController]
 	[Route("[controller]")]
 	[ApiVersion("1.0")]
-	public class NoteController : BaseApiController
+	public class NoteController() : BaseApiController
 	{
 		[HttpPost]
 		[ProducesResponseType(typeof(Created), StatusCodes.Status201Created)]
