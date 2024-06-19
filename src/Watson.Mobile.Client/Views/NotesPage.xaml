@@ -17,6 +17,25 @@
                     <StackLayout Padding="10">
                         <Entry Text="{Binding Name}" Placeholder="Enter Name" Completed="OnNameCompleted"/>
                         <Entry Text="{Binding Description}" Placeholder="Enter Description" Completed="OnDescriptionCompleted"/>
+                        <Label Text="Position:" />
+                        <StackLayout Orientation="Horizontal">
+                            <Entry Text="{Binding ObjectMetadata.Position[0]}" Placeholder="X" Completed="OnPositionCompleted"/>
+                            <Entry Text="{Binding ObjectMetadata.Position[1]}" Placeholder="Y" Completed="OnPositionCompleted"/>
+                            <Entry Text="{Binding ObjectMetadata.Position[2]}" Placeholder="Z" Completed="OnPositionCompleted"/>
+                        </StackLayout>
+                        <Label Text="Rotation:" />
+                        <StackLayout Orientation="Horizontal">
+                            <Entry Text="{Binding ObjectMetadata.Rotation[0]}" Placeholder="X" Completed="OnRotationCompleted"/>
+                            <Entry Text="{Binding ObjectMetadata.Rotation[1]}" Placeholder="Y" Completed="OnRotationCompleted"/>
+                            <Entry Text="{Binding ObjectMetadata.Rotation[2]}" Placeholder="Z" Completed="OnRotationCompleted"/>
+                            <Entry Text="{Binding ObjectMetadata.Rotation[3]}" Placeholder="W" Completed="OnRotationCompleted"/>
+                        </StackLayout>
+                        <Label Text="Scale:" />
+                        <StackLayout Orientation="Horizontal">
+                            <Entry Text="{Binding ObjectMetadata.Scale[0]}" Placeholder="X" Completed="OnScaleCompleted"/>
+                            <Entry Text="{Binding ObjectMetadata.Scale[1]}" Placeholder="Y" Completed="OnScaleCompleted"/>
+                            <Entry Text="{Binding ObjectMetadata.Scale[2]}" Placeholder="Z" Completed="OnScaleCompleted"/>
+                        </StackLayout>
                     </StackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>

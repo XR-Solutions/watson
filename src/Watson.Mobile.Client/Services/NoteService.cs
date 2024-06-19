@@ -15,7 +15,7 @@ namespace Watson.Mobile.Client.Services
 			var handler = new BypassSslValidationHandler();
 			_httpClient = new HttpClient(handler)
 			{
-				BaseAddress = new Uri("https://localhost:58200/")
+				BaseAddress = new Uri("http://192.168.30.24/")
 			};
 		}
 

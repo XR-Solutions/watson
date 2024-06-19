@@ -77,6 +77,49 @@ public partial class NotesPage : ContentPage
 		await UpdateNoteAsync(note);
 	}
 
+	private async void OnPositionCompleted(object sender, EventArgs e)
+	{
+		var entry = sender as Entry;
+		var note = entry.BindingContext as Note;
+
+		// Update note with new position values
+		if (float.TryParse(entry.Text, out float value))
+		{
+			var index = ((StackLayout)entry.Parent).Children.IndexOf(entry);
+			note.ObjectMetadata.Position[index] = value;
+			await UpdateNoteAsync(note);
+		}
+	}
+
+	private async void OnRotationCompleted(object sender, EventArgs e)
+	{
+		var entry = sender as Entry;
+		var note = entry.BindingContext as Note;
+
+		// Update note with new rotation values
+		if (float.TryParse(entry.Text, out float value))
+		{
+			var index = ((StackLayout)entry.Parent).Children.IndexOf(entry);
+			note.ObjectMetadata.Rotation[index] = value;
+			await UpdateNoteAsync(note);
+		}
+	}
+
+	private async void OnScaleCompleted(object sender, EventArgs e)
+	{
+		var entry = sender as Entry;
+		var note = entry.BindingContext as Note;
+
+		// Update note with new scale values
+		if (float.TryParse(entry.Text, out float value))
+		{
+			var index = ((StackLayout)entry.Parent).Children.IndexOf(entry);
+			note.ObjectMetadata.Scale[index] = value;
+			Console.WriteLine($"Scale updated: {note.ObjectMetadata.Scale[index]} at index {index}");
+			await UpdateNoteAsync(note);
+		}
+	}
+
 	private async Task UpdateNoteAsync(Note updatedNote)
 	{
 		try
