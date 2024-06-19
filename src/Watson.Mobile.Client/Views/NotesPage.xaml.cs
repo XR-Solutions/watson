@@ -7,11 +7,27 @@ public partial class NotesPage : ContentPage
 {
 	private readonly NoteService _noteService;
 	private List<Note> _notes;
+	private readonly SignalRService _signalRService;
 
 	public NotesPage()
 	{
 		InitializeComponent();
 		_noteService = new NoteService();
+		_signalRService = new SignalRService();
+		_signalRService.NoteUpdated += OnNoteUpdated;
+	}
+
+	protected override async void OnAppearing()
+	{
+		base.OnAppearing();
+		await _signalRService.StartAsync();
+		await LoadNotesAsync();
+	}
+
+	protected override async void OnDisappearing()
+	{
+		base.OnDisappearing();
+		await _signalRService.StopAsync();
 	}
 
 	private async void OnLoadNotesClicked(object sender, EventArgs e)
@@ -29,6 +45,19 @@ public partial class NotesPage : ContentPage
 		catch (Exception ex)
 		{
 			Console.WriteLine($"Error loading notes: {ex.Message}");
+		}
+	}
+
+	private async void OnNoteUpdated(string noteId)
+	{
+		var updatedNote = await _noteService.GetNoteByIdAsync(noteId);
+
+		var noteIndex = _notes.FindIndex(n => n.Guid == noteId);
+		if (noteIndex >= 0)
+		{
+			_notes[noteIndex] = updatedNote;
+			NotesCollectionView.ItemsSource = null;
+			NotesCollectionView.ItemsSource = _notes;
 		}
 	}
 

@@ -34,7 +34,6 @@ builder.Services.AddControllers().AddJsonOptions(o =>
 
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<Program>());
 
-
 bool useStubs = builder.Configuration.GetValue<bool>("UseStubs");
 
 if (useStubs)
@@ -71,6 +70,7 @@ app.UseHealthChecks("/health");
 
 app.MapControllers();
 app.MapHub<ChatHub>("/chatHub");
+app.MapHub<NotesHub>("/noteshub");
 
 app.Run();
 
