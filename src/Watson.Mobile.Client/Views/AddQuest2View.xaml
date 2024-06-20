@@ -12,7 +12,7 @@
             Spacing="15">
 
             <Label Text="Quest 2" FontAttributes="Bold" HorizontalTextAlignment="Center" FontSize="Medium" />
-            <WebView HeightRequest="150" Source="Quest2/scene.html" x:Name="webview" BackgroundColor="Transparent" />
+            <WebView Source="Quest2/scene.html" x:Name="webview" BackgroundColor="Transparent" />
 
         </VerticalStackLayout>
     </ScrollView>

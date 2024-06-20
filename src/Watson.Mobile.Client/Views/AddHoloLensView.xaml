@@ -12,7 +12,7 @@
             Spacing="15">
 
             <Label Text="HoloLens 2" FontAttributes="Bold" HorizontalTextAlignment="Center" FontSize="Medium" />
-            <WebView HeightRequest="150" Source="HoloLens2/scene.html" x:Name="webview" BackgroundColor="Transparent" />
+            <WebView Source="HoloLens2/scene.html" x:Name="webview" BackgroundColor="Transparent" />
 
         </VerticalStackLayout>
     </ScrollView>
