@@ -18,7 +18,7 @@ namespace Watson.Mobile.Client.Views
 
         public void AddMetaQuestTwo(object sender, EventArgs e)
         {
-            _navigationService.NavigateToAsync("///Companion/AddDevice/HoloLens2");
+            _navigationService.NavigateToAsync("///Companion/AddDevice/Quest2");
         }
     }
 }

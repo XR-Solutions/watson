@@ -1,0 +1,12 @@
+﻿body {
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 150px;
+}
+
+model-viewer {
+    width: 100%;
+    min-height: 200px;
+}

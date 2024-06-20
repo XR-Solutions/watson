@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:Watson.Mobile.Client.Views"
+             x:Class="Watson.Mobile.Client.Views.AddQuest2View"
+             Title="Apparaat toevoegen">
+
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="20,75,20,25"
+            Spacing="15">
+
+            <Label Text="Quest 2" FontAttributes="Bold" HorizontalTextAlignment="Center" FontSize="Medium" />
+            <WebView HeightRequest="150" Source="Quest2/scene.html" x:Name="webview" BackgroundColor="Transparent" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

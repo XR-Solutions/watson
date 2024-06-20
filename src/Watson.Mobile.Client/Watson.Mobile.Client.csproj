@@ -58,9 +58,20 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiCss Remove="Resources\Raw\ModelViewer\main.css" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <None Remove="appsettings.json" />
 	  <None Remove="Resources\Fonts\Font_Awesome_5_Free-Regular-400.otf" />
 	  <None Remove="Resources\Fonts\Font_Awesome_5_Free-Solid-900.otf" />
+	  <None Remove="Resources\Raw\HoloLens2\model.glb" />
+	  <None Remove="Resources\Raw\Quest2\model.glb" />
+	  <None Remove="Resources\Raw\Quest2\scene.html" />
+	  <None Remove="Resources\Raw\HoloLens2\scene.html" />
+	  <None Remove="Resources\Raw\Models\dsattelite.png" />
+	  <None Remove="Resources\Raw\Models\microsoft_hololens_2.glb" />
+	  <None Remove="Resources\Raw\ModelViewer\FetchInterceptor.js" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -83,6 +94,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Views\AddQuest2View.xaml.cs">
+	    <DependentUpon>AddQuest2View.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Views\AddHoloLensView.xaml.cs">
 	    <DependentUpon>AddHoloLensView.xaml</DependentUpon>
 	  </Compile>
@@ -104,6 +118,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="Views\AddQuest2View.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\AddHoloLensView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -126,6 +143,18 @@
 
 	<ItemGroup>
 	  <Folder Include="Resources\Images\Devices\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiAsset Update="Resources\Raw\Quest2\scene.html">
+	    <LogicalName>%(RecursiveDir)%(Filename)%(Extension)</LogicalName>
+	  </MauiAsset>
+	  <MauiAsset Update="Resources\Raw\Models\dsattelite.png">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </MauiAsset>
+	  <MauiAsset Update="Resources\Raw\Models\microsoft_hololens_2.glb">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </MauiAsset>
 	</ItemGroup>
 
 	<ProjectExtensions><VisualStudio><UserProperties XamarinHotReloadDebuggerTimeoutExceptionWatsonMobileClientHideInfoBar="True" /></VisualStudio></ProjectExtensions>

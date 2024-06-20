@@ -1,0 +1,25 @@
+﻿<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../ModelViewer/main.css" />
+</head>
+<body>    
+    <script src='../ModelViewer/FetchInterceptor.js'></script>
+    <script type='module' src='../ModelViewer/model-viewer.min.js'></script>
+    
+    <model-viewer 
+        src="model.glb" 
+        camera-controls 
+        disable-tap
+        interaction-prompt="none" 
+        disable-zoom 
+        shadow-intensity="1" 
+        exposure="0.8" 
+        auto-rotate auto-rotate-delay="0"
+        rotation-per-second="150%"
+        tone-mapping="neutral"
+        camera-orbit="180deg 75deg 105%"
+    ></model-viewer>
+</body>
+</html>

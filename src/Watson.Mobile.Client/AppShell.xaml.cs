@@ -28,6 +28,7 @@ namespace Watson.Mobile.Client
         {
             Routing.RegisterRoute("Companion/AddDevice", typeof(AddDeviceView));
             Routing.RegisterRoute("Companion/AddDevice/HoloLens2", typeof(AddHoloLensView));
+            Routing.RegisterRoute("Companion/AddDevice/Quest2", typeof(AddQuest2View));
         }
     }
 }
