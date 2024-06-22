@@ -8,14 +8,14 @@ namespace Watson.Mobile.Client.Services
 	public class NoteService
 	{
 		private readonly HttpClient _httpClient;
-		//private const string BaseUrl = "http://192.168.178.61/api/v1/Note";
+		//private const string BaseUrl = "http://192.168.178.61:80/api/v1/Note";
 
 		public NoteService()
 		{
 			var handler = new BypassSslValidationHandler();
 			_httpClient = new HttpClient(handler)
 			{
-				BaseAddress = new Uri("http://192.168.30.24/")
+				BaseAddress = new Uri("http://192.168.178.61:80/")
 			};
 		}
 

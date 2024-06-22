@@ -11,7 +11,7 @@ namespace Watson.Mobile.Client.Services
 		public SignalRService()
 		{
 			_connection = new HubConnectionBuilder()
-				.WithUrl("https://localhost:58200/noteshub")
+				.WithUrl("http://192.168.178.61:80/noteshub")
 				.Build();
 
 			_connection.On<string>("ReceiveNoteUpdate", (noteId) =>

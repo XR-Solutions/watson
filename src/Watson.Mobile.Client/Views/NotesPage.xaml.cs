@@ -55,9 +55,12 @@ public partial class NotesPage : ContentPage
 		var noteIndex = _notes.FindIndex(n => n.Guid == noteId);
 		if (noteIndex >= 0)
 		{
-			_notes[noteIndex] = updatedNote;
-			NotesCollectionView.ItemsSource = null;
-			NotesCollectionView.ItemsSource = _notes;
+			Device.BeginInvokeOnMainThread(() =>
+			{
+				_notes[noteIndex] = updatedNote;
+				NotesCollectionView.ItemsSource = null;
+				NotesCollectionView.ItemsSource = _notes;
+			});
 		}
 	}
 
