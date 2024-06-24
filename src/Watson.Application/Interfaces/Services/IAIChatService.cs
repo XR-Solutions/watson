@@ -1,4 +1,5 @@
-﻿using Watson.Core.Entities;
+﻿using System.Threading.Tasks;
+using Watson.Core.Entities;
 
 namespace Watson.Application.Interfaces.Services
 {

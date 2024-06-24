@@ -1,13 +1,13 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Watson.Web.Controllers
 {
-    [Route("api/v{version:apiVersion}/[controller]")]
-    [ApiController]
-    public class BaseApiController : ControllerBase
-    {
-        private IMediator _mediator;
-        protected IMediator Mediator => _mediator ??= HttpContext.RequestServices.GetService<IMediator>();
-    }
+	[Route("api/[controller]")]
+	public class BaseApiController : ControllerBase
+	{
+		private IMediator _mediator;
+		protected IMediator Mediator => _mediator ??= HttpContext.RequestServices.GetService<IMediator>();
+	}
 }

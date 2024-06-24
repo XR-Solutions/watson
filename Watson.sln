@@ -23,7 +23,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Watson.Mobile.Client", "src
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Watson.Adapter.Shared", "src\Watson.Adapter.Shared\Watson.Adapter.Shared.csproj", "{1D9B058E-96E9-425C-926B-5C0E442D1FBB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Watson.Adapter.OpenAI", "src\Watson.Adapter.OpenAI\Watson.Adapter.OpenAI.csproj", "{88E5A49E-3C7F-41B5-AD67-6D32943F9F2C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Watson.Adapter.OpenAI", "src\Watson.Adapter.OpenAI\Watson.Adapter.OpenAI.csproj", "{88E5A49E-3C7F-41B5-AD67-6D32943F9F2C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Watson.Adapter.Stub", "src\Watson.Adapter.Stub\Watson.Adapter.Stub.csproj", "{65E621DC-A435-49AC-9946-FF164166D542}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +71,10 @@ Global
 		{88E5A49E-3C7F-41B5-AD67-6D32943F9F2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{88E5A49E-3C7F-41B5-AD67-6D32943F9F2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{88E5A49E-3C7F-41B5-AD67-6D32943F9F2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65E621DC-A435-49AC-9946-FF164166D542}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65E621DC-A435-49AC-9946-FF164166D542}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65E621DC-A435-49AC-9946-FF164166D542}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65E621DC-A435-49AC-9946-FF164166D542}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -83,6 +89,7 @@ Global
 		{5A3DA755-C587-4CF4-9968-4101937AF37B} = {5159B531-5306-437B-B180-E480F4EF78A2}
 		{1D9B058E-96E9-425C-926B-5C0E442D1FBB} = {5159B531-5306-437B-B180-E480F4EF78A2}
 		{88E5A49E-3C7F-41B5-AD67-6D32943F9F2C} = {5159B531-5306-437B-B180-E480F4EF78A2}
+		{65E621DC-A435-49AC-9946-FF164166D542} = {5159B531-5306-437B-B180-E480F4EF78A2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BDFAF9E9-B98A-49BB-9DE8-845DA23296B7}

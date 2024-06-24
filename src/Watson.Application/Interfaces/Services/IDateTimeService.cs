@@ -1,4 +1,6 @@
-﻿namespace Watson.Application.Interfaces.Services
+﻿using System;
+
+namespace Watson.Application.Interfaces.Services
 {
     public interface IDateTimeService
     {

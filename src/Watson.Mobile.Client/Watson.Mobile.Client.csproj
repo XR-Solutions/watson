@@ -91,6 +91,34 @@
 		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.14" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.60" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Views\AddQuest2View.xaml.cs">
+	    <DependentUpon>AddQuest2View.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\AddHoloLensView.xaml.cs">
+	    <DependentUpon>AddHoloLensView.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\AddDeviceView.xaml.cs">
+	    <DependentUpon>AddDeviceView.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\NotesView.xaml.cs">
+	    <DependentUpon>NotesView.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\ReportView.xaml.cs">
+	    <DependentUpon>ReportView.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\SettingsView.xaml.cs">
+	    <DependentUpon>SettingsView.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\CopilotView.xaml.cs">
+	    <DependentUpon>CopilotView.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\CompanionView.xaml.cs">
+	    <DependentUpon>CompanionView.xaml</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>

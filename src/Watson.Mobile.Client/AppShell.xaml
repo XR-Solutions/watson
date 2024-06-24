@@ -25,7 +25,7 @@
         
         <ShellContent
             Title="Rapportage"
-            ContentTemplate="{DataTemplate views:ReportView}"
+            ContentTemplate="{DataTemplate views:NotesView}"
             Icon="{StaticResource ReportIconImageSource}"
             Route="Report" />
 

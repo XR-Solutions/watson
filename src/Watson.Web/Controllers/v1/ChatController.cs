@@ -1,5 +1,6 @@
 ﻿using Asp.Versioning;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 using Watson.Application.Features.Chat.Commands;
 
 namespace Watson.Web.Controllers.v1

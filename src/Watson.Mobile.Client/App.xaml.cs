@@ -1,4 +1,4 @@
-﻿using Watson.Mobile.Client.Services.Navigation;
+using Watson.Mobile.Client.Services.Navigation;
 
 namespace Watson.Mobile.Client
 {

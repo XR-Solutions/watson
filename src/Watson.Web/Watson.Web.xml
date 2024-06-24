@@ -18,5 +18,25 @@
             <param name="command">The necessary infromation to send a chat message in a session.</param>
             <returns code="200">Returns the response from the generative model</returns>
         </member>
+        <member name="M:Watson.Web.Controllers.v1.NoteController.CreateNote(Watson.Core.Entities.Note)">
+            <summary>
+            	Add a new note to a Crime Scene
+            </summary>
+            <param name="note">A note object containing all information to a note</param>
+            <returns>The GUID of the newly created Note</returns>
+        </member>
+        <member name="M:Watson.Web.Controllers.v1.NoteController.UpdateNote(Watson.Core.Entities.Note)">
+            <summary>
+            	Update an existing Note within a Crime Scene
+            </summary>
+            <param name="note"></param>
+            <returns>A boolean indicator whether the Note has been successfully updated</returns>
+        </member>
+        <member name="M:Watson.Web.Controllers.v1.NoteController.GetAllNotes">
+            <summary>
+            	Gets all notes belonging within a Crime Scene
+            </summary>
+            <returns>A paginated list with all Notes</returns>
+        </member>
     </members>
 </doc>
