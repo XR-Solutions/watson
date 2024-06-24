@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Watson.Mobile.Client.Views.NotesPage"
              xmlns:vm="clr-namespace:Watson.Mobile.Client.ViewModel"
+             xmlns:local="clr-namespace:Watson.Mobile.Client.Models"
              Title="NotesPage">
 
     <StackLayout>
@@ -17,6 +18,13 @@
                     <StackLayout Padding="10">
                         <Entry Text="{Binding Name}" Placeholder="Enter Name" Completed="OnNameCompleted"/>
                         <Entry Text="{Binding Description}" Placeholder="Enter Description" Completed="OnDescriptionCompleted"/>
+
+                        <Label Text="Trace Type:" />
+                        <Picker ItemsSource="{Binding Source={x:Static local:TraceTypesEnumValues.Values}}"
+                                SelectedItem="{Binding TraceType}"
+                                ItemDisplayBinding="{Binding .}"
+                                SelectedIndexChanged="OnTraceTypeChanged" />
+
                         <Label Text="Position:" />
                         <StackLayout Orientation="Horizontal">
                             <Entry Text="{Binding ObjectMetadata.Position[0]}" Placeholder="X" Completed="OnPositionCompleted"/>

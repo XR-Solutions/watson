@@ -29,10 +29,28 @@ namespace Watson.Application.Services
 							{
 								column.Item().PaddingBottom(10).Column(noteColumn =>
 								{
-									noteColumn.Item().Text(note.Name).FontSize(14).Bold();
+									noteColumn.Item().Text(note.Name).FontSize(14).Bold().Underline();
+
+									noteColumn.Item().PaddingTop(5).Text("Description:").Bold();
 									noteColumn.Item().Text(note.Description).FontSize(12);
-									noteColumn.Item().Text($"Transform: {note.ObjectMetadata.Position[0]}, {note.ObjectMetadata.Position[1]}, {note.ObjectMetadata.Position[2]}").FontSize(10);
+
+									noteColumn.Item().PaddingTop(5).Text("Location (in meters):").Bold();
+									noteColumn.Item().Text($"X: {note.ObjectMetadata.Position[0]} m, Y: {note.ObjectMetadata.Position[1]} m, Z: {note.ObjectMetadata.Position[2]} m").FontSize(10);
+
+									noteColumn.Item().PaddingTop(5).Text("Orientation (Euler angles in degrees):").Bold();
+									noteColumn.Item().Text($"X: {note.ObjectMetadata.Rotation[0]}°, Y: {note.ObjectMetadata.Rotation[1]}°, Z: {note.ObjectMetadata.Rotation[2]}°").FontSize(10);
+
+									noteColumn.Item().PaddingTop(5).Text("Size (in meters):").Bold();
+									noteColumn.Item().Text($"Width: {note.ObjectMetadata.Scale[0]} m, Height: {note.ObjectMetadata.Scale[1]} m, Depth: {note.ObjectMetadata.Scale[2]} m").FontSize(10);
+
+									noteColumn.Item().PaddingTop(5).Text("Status:").Bold();
+									noteColumn.Item().Text(note.ObjectMetadata.Enabled ? "Active" : "Inactive").FontSize(10);
+
+									noteColumn.Item().PaddingTop(5).Text("Trace Type:").Bold();
+									noteColumn.Item().Text(note.TraceType.ToString()).FontSize(10);
 								});
+
+								column.Item().PaddingVertical(10).LineHorizontal(1).LineColor(Colors.Grey.Lighten2);
 							}
 						});
 
@@ -58,7 +76,6 @@ namespace Watson.Application.Services
 			{
 				throw ex;
 			}
-
 		}
 	}
 }

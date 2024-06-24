@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using QuestPDF.Infrastructure;
+using System;
 using System.Text.Json.Serialization;
 using Watson.Adapter.SqlServer;
 using Watson.Adapter.SqlServer.Repositories;
@@ -18,7 +19,6 @@ QuestPDF.Settings.License = LicenseType.Community;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddApplicationLayer();
 builder.Services.AddPersistenceAdapter(builder.Configuration);
@@ -49,7 +49,11 @@ builder.Services.AddApiVersioningExtension();
 builder.Services.AddVersioningPrefix();
 builder.Services.AddHealthChecks();
 
-builder.Services.AddSignalR();
+builder.Services.AddSignalR(hubOptions =>
+{
+	hubOptions.EnableDetailedErrors = true;
+	hubOptions.KeepAliveInterval = TimeSpan.FromMinutes(60);
+});
 
 var app = builder.Build();
 

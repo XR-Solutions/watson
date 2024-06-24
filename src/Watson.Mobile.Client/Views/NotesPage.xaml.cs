@@ -8,6 +8,7 @@ public partial class NotesPage : ContentPage
 	private readonly NoteService _noteService;
 	private List<Note> _notes;
 	private readonly SignalRService _signalRService;
+	private bool _isUpdating;  // Add a flag to manage the state
 
 	public NotesPage()
 	{
@@ -122,13 +123,35 @@ public partial class NotesPage : ContentPage
 			await UpdateNoteAsync(note);
 		}
 	}
+	private async void OnTraceTypeChanged(object sender, EventArgs e)
+	{
+		if (_isUpdating)
+			return;
+
+		try
+		{
+			_isUpdating = true;
+
+			var picker = sender as Picker;
+			var note = picker.BindingContext as Note;
+
+			if (picker.SelectedItem is TraceTypes selectedTraceType)
+			{
+				note.TraceType = selectedTraceType;
+				await UpdateNoteAsync(note);
+			}
+		}
+		finally
+		{
+			_isUpdating = false;
+		}
+	}
 
 	private async Task UpdateNoteAsync(Note updatedNote)
 	{
 		try
 		{
 			await _noteService.UpdateNoteAsync(updatedNote);
-			// Optionally provide feedback to the user
 			await DisplayAlert("Success", "Note updated successfully", "OK");
 		}
 		catch (Exception ex)
