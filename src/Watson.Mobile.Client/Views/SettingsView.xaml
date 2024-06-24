@@ -89,7 +89,7 @@
                     Padding="5"
                     BorderColor="Transparent"
                     BackgroundColor="{AppThemeBinding Light={StaticResource Gray50}, Dark={StaticResource BlackTertiary}}">
-                    <Label Text="Placeholder 1"/>
+                    <Label Text="Connected device will be shown here"/>
                 </Frame>
 
                 <Frame
@@ -99,7 +99,7 @@
                     HeightRequest="150"
                     BorderColor="Transparent"
                     BackgroundColor="{AppThemeBinding Light={StaticResource Gray50}, Dark={StaticResource BlackTertiary}}">
-                    <Label Text="Placeholder 2"/>
+                    <Label Text="Placeholder 2: To be removed if unused"/>
 
                 </Frame>
 
