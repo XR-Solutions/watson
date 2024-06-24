@@ -4,12 +4,16 @@ using Watson.Mobile.Client.Services.Identity;
 using Watson.Mobile.Client.Services.Navigation;
 using Watson.Mobile.Client.ViewModels.Base;
 using Watson.Mobile.Client.Models.User;
+using Microsoft.Extensions.Options;
+using Watson.Mobile.Client.Options;
 
 namespace Watson.Mobile.Client.ViewModels
 {
     public partial class SettingsViewModel : ViewModelBase
     {
         private readonly IIdentityService _identityService;
+        private readonly INavigationService _navigationService;
+        private readonly LinkSettings _links;
 
         [ObservableProperty]
         private UserInfo? user;
@@ -17,9 +21,14 @@ namespace Watson.Mobile.Client.ViewModels
         [ObservableProperty]
         private bool isLoggedIn = false;
 
-        public SettingsViewModel(INavigationService navigationService, IIdentityService identityService) : base(navigationService)
+        [ObservableProperty]
+        private string currentVersion = VersionTracking.CurrentVersion.ToString();
+
+        public SettingsViewModel(INavigationService navigationService, IIdentityService identityService, IOptions<LinkSettings> linkOption) : base(navigationService)
         {
+            _navigationService = navigationService;
             _identityService = identityService;
+            _links = linkOption.Value;
         }
 
         public override async Task InitializeAsync()
@@ -39,6 +48,21 @@ namespace Watson.Mobile.Client.ViewModels
         {
             await _identityService.LoginAsync();
             await RefreshAsync();
+        }
+
+        [RelayCommand]
+        private void OpenHelpSite() => OpenUrlInDefaultWebsite(_links.HelpSiteUrl);
+
+        [RelayCommand]
+        private void OpenGithubSite() => OpenUrlInDefaultWebsite(_links.GitHubRepoUrl);
+
+        [RelayCommand]
+        private async Task OpenAppInfoAsync() => await _navigationService.NavigateToAsync("AppInfo");
+
+        private static void OpenUrlInDefaultWebsite(string link)
+        {
+            var uri = new Uri(link);
+            Browser.Default.OpenAsync(uri, BrowserLaunchMode.External);
         }
 
         [RelayCommand]

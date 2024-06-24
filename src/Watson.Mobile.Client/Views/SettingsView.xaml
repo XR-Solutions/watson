@@ -112,11 +112,30 @@
                 <VerticalStackLayout
                     Spacing="5">
 
-                    <Button Text="Help" BackgroundColor="Transparent" HorizontalOptions="StartAndExpand" />
-                    <Button Text="Taal" BackgroundColor="Transparent" HorizontalOptions="StartAndExpand" />
-                    <Button Text="Uiterlijk" BackgroundColor="Transparent" HorizontalOptions="StartAndExpand" />
-                    <Button Text="Log uit" BackgroundColor="Transparent" HorizontalOptions="StartAndExpand" Command="{Binding LogOutCommand}" IsVisible="{Binding IsLoggedIn}" />
+                    <HorizontalStackLayout Padding="10" Spacing="10" VerticalOptions="Start">
+                        <HorizontalStackLayout.GestureRecognizers> <TapGestureRecognizer Command="{Binding OpenHelpSiteCommand}" /> </HorizontalStackLayout.GestureRecognizers>
+                        <Label FontFamily="FontAwesome-Solid" Text="&#x3f;" WidthRequest="15" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+                        <Label Text="Help" VerticalTextAlignment="Center" />
+                    </HorizontalStackLayout>
 
+                    <HorizontalStackLayout Padding="10" Spacing="10" VerticalOptions="Start">
+                        <HorizontalStackLayout.GestureRecognizers> <TapGestureRecognizer  /> </HorizontalStackLayout.GestureRecognizers>
+                        <Label FontFamily="FontAwesome-Solid" Text="&#xf7a2;" WidthRequest="15" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+                        <Label Text="Taal" VerticalTextAlignment="Center" />
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout Padding="10" Spacing="10" VerticalOptions="Start">
+                        <HorizontalStackLayout.GestureRecognizers> <TapGestureRecognizer  /> </HorizontalStackLayout.GestureRecognizers>
+                        <Label FontFamily="FontAwesome-Solid" Text="&#xf53f;" WidthRequest="15" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+                        <Label Text="Uiterlijk" VerticalTextAlignment="Center" />
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout Padding="10" Spacing="10" VerticalOptions="Start" IsVisible="{Binding IsLoggedIn}">
+                        <HorizontalStackLayout.GestureRecognizers> <TapGestureRecognizer Command="{Binding LogOutCommand}" /> </HorizontalStackLayout.GestureRecognizers>
+                        <Label FontFamily="FontAwesome-Solid" Text="&#xf2f5;" WidthRequest="15" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+                        <Label Text="Log uit" VerticalTextAlignment="Center" />
+                    </HorizontalStackLayout>
+                    
                 </VerticalStackLayout>
             </Frame>
 
@@ -127,8 +146,17 @@
                 <VerticalStackLayout
                     Spacing="5">
 
-                    <Button Text="GitHub" BackgroundColor="Transparent" HorizontalOptions="StartAndExpand" />
-                    <Button Text="App info" BackgroundColor="Transparent" HorizontalOptions="StartAndExpand" />
+                    <HorizontalStackLayout Padding="10" Spacing="10" VerticalOptions="Start">
+                        <HorizontalStackLayout.GestureRecognizers> <TapGestureRecognizer Command="{Binding OpenGithubSiteCommand}" /> </HorizontalStackLayout.GestureRecognizers>
+                        <Label FontFamily="FontAwesome-Solid" Text="&#xf126;" WidthRequest="15" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+                        <Label Text="GitHub" VerticalTextAlignment="Center" />
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout Padding="10" Spacing="10" VerticalOptions="Start">
+                        <HorizontalStackLayout.GestureRecognizers> <TapGestureRecognizer Command="{Binding OpenAppInfoCommand}" /> </HorizontalStackLayout.GestureRecognizers>
+                        <Label FontFamily="FontAwesome-Solid" Text="&#xf05a;" WidthRequest="15" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+                        <Label Text="Info" VerticalTextAlignment="Center" />
+                    </HorizontalStackLayout>
 
                 </VerticalStackLayout>
             </Frame>
@@ -138,7 +166,7 @@
                 Padding="15"
                 Spacing="5">
 
-                <Label Text="1.0.0" HorizontalOptions="Center" FontSize="Small" TextColor="{StaticResource Gray500}" /> <!-- TODO: add real version number -->
+                <Label Text="{Binding CurrentVersion}" HorizontalOptions="Center" FontSize="Small" TextColor="{StaticResource Gray500}" />
                 <Label Text="Watson - Mobile Companion App" HorizontalOptions="Center" FontSize="Small" TextColor="{StaticResource Gray500}" />
 
             </VerticalStackLayout>

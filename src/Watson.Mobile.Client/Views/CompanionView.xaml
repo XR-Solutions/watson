@@ -22,8 +22,7 @@
                 <Label
                     Text="Voeg een Mixed Reality apparaat toe om deze met je telefoon te besturen" 
                     HorizontalTextAlignment="Center"
-                    FontSize="Small" 
-                    FontAttributes="Bold" />
+                    FontSize="Small" />
             </StackLayout>
 
             <Button 

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Watson.Mobile.Client.Views.AppInfoView"
+             Title="About" >
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="15,0"
+            Spacing="15">
+
+            <Image Source="Branding/watson_logo_cropped.png" WidthRequest="75" Margin="0,50,0,15" />
+            <Label Text="Watson Companion" FontAttributes="Bold" FontSize="Medium" HorizontalTextAlignment="Center" />
+
+            <Label HorizontalTextAlignment="Center" Opacity="0.7" Text="Deze app is ontwikkeld als onderdeel van ons Mixed Reality project. De app werkt het beste samen met de Watson Mixed Reality App, ontwikkeld voor de HoloLens 2. De app moet bepaalde handelingen gebruikersvriendelijker maken, zowel als extra controls bieden voor gebruik met de HoloLens." />
+
+            <Label HorizontalOptions="Center" Margin="0,50,0,0" Text="Ontwikkeld met .NET MAUI" />
+            <Label HorizontalOptions="Center" x:Name="VersionLabel" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

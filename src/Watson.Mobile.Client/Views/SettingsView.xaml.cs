@@ -10,6 +10,7 @@ namespace Watson.Mobile.Client.Views
         {
             _viewModel = viewModel;
             BindingContext = viewModel;
+
             InitializeComponent();
         }
 

@@ -28,12 +28,17 @@ namespace Watson.Mobile.Client
                     fonts.AddFont("Font_Awesome_5_Free-Solid-900.otf", "FontAwesome-Solid");
                     fonts.AddFont("Font_Awesome_5_Free-Regular-400.otf", "FontAwesome-Regular");
                 })
+                .ConfigureEssentials(essentials =>
+                {
+                    essentials.UseVersionTracking();
+                })
                 .Configuration.AddConfiguration(config);
 
 #if DEBUG
             builder.Logging.AddDebug();
 #endif
-            builder.RegisterAppServices()
+            builder.RegisterOptions(config)
+                .RegisterAppServices()
                 .RegisterIdentity(config)
                 .RegisterViewModels()
                 .RegisterViews();
