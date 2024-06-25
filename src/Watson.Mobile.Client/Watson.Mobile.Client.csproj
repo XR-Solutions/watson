@@ -66,6 +66,7 @@
 	  <None Remove="Resources\Fonts\Font_Awesome_5_Free-Regular-400.otf" />
 	  <None Remove="Resources\Fonts\Font_Awesome_5_Free-Solid-900.otf" />
 	  <None Remove="Resources\Images\Branding\watson_logo_cropped.png" />
+	  <None Remove="Resources\Images\Illustrations\paint_brush.png" />
 	  <None Remove="Resources\Raw\HoloLens2\model.glb" />
 	  <None Remove="Resources\Raw\Quest2\model.glb" />
 	  <None Remove="Resources\Raw\Quest2\scene.html" />
@@ -104,6 +105,9 @@
 	  </Compile>
 	  <Compile Update="Views\AddDeviceView.xaml.cs">
 	    <DependentUpon>AddDeviceView.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\AppearanceView.xaml.cs">
+	    <DependentUpon>AppearanceView.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="Views\NotesView.xaml.cs">
 	    <DependentUpon>NotesView.xaml</DependentUpon>
@@ -151,6 +155,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\AddDeviceView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\AppearanceView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\AppInfoView.xaml">

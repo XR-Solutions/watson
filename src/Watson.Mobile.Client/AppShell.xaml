@@ -9,7 +9,6 @@
     Shell.FlyoutBehavior="Disabled"
     Title="Watson Companion App">
 
-
     <Shell.Behaviors>
         <toolkit:StatusBarBehavior 
             StatusBarColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}" 

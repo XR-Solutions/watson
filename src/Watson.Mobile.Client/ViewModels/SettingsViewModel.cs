@@ -57,6 +57,9 @@ namespace Watson.Mobile.Client.ViewModels
         private void OpenGithubSite() => OpenUrlInDefaultWebsite(_links.GitHubRepoUrl);
 
         [RelayCommand]
+        private async Task OpenAppearanceAsync() => await _navigationService.NavigateToAsync("Appearance");
+
+        [RelayCommand]
         private async Task OpenAppInfoAsync() => await _navigationService.NavigateToAsync("AppInfo");
 
         private static void OpenUrlInDefaultWebsite(string link)

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Watson.Mobile.Client.Views.AppearanceView"
+             xmlns:viewmodel="clr-namespace:Watson.Mobile.Client.ViewModels"
+             x:DataType="viewmodel:AppearanceViewModel"
+             xmlns:generic="clr-namespace:Watson.Mobile.Client.Components.Generic"
+             Shell.TabBarIsVisible="False"
+             Title="Theme preview" >
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="15,0"
+            Spacing="15">
+
+            <Frame 
+                BackgroundColor="{AppThemeBinding Dark=Black, Light=White}"
+                WidthRequest="150"
+                HeightRequest="225"
+                Margin="0, 50">
+
+                <VerticalStackLayout>
+                    <HorizontalStackLayout Spacing="5">
+                        <Frame 
+                            BackgroundColor="{AppThemeBinding Dark={StaticResource BlackSecondary}, Light={StaticResource Gray50}}"
+                            WidthRequest="25"
+                            HeightRequest="25"
+                            CornerRadius="999"
+                            BorderColor="Transparent"
+                        />
+
+                        <Frame 
+                            BackgroundColor="{AppThemeBinding Dark={StaticResource BlackSecondary}, Light={StaticResource Gray50}}"
+                            WidthRequest="80"
+                            HeightRequest="25"
+                            CornerRadius="999"
+                            BorderColor="Transparent"
+                        />
+                        
+                    </HorizontalStackLayout>
+
+                    <Image Source="Illustrations/paint_brush.png" WidthRequest="75" Margin="0,15,0,5" />
+                    <Button FontFamily="FontAwesome-Solid" Text="&#xf00c;" CornerRadius="999" WidthRequest="25" HeightRequest="25" Padding="0" FontSize="Micro" />
+
+                    <Frame
+                        BackgroundColor="{AppThemeBinding Dark={StaticResource BlackTertiary}, Light={StaticResource Gray100}}"
+                        HeightRequest="25"
+                        CornerRadius="999"
+                        BorderColor="Transparent"
+                        Margin="0,15,0,0"
+                    />
+
+                </VerticalStackLayout>
+                
+            </Frame>
+
+            <Frame BackgroundColor="{AppThemeBinding Dark={StaticResource BlackSecondary}, Light={StaticResource Gray50}}" BorderColor="Transparent">
+                <FlexLayout AlignContent="Center" JustifyContent="SpaceBetween">
+                    <VerticalStackLayout>
+                        <VerticalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ChangeThemeCommand}" CommandParameter="light" />
+                        </VerticalStackLayout.GestureRecognizers>
+
+                        <Frame WidthRequest="75" Padding="0" CornerRadius="5">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ChangeThemeCommand}" CommandParameter="light" />
+                            </Frame.GestureRecognizers>
+                            <Image Source="Theme/light.png" />
+                        </Frame>
+                        <generic:If Condition="{Binding LightBorder}">
+                            <generic:If.True>
+                                <Frame Margin="0, 15, 0, 0" Padding="0" BorderColor="Transparent" BackgroundColor="{StaticResource Primary}">
+                                    <Label Text="Light" HorizontalTextAlignment="Center" TextColor="{StaticResource White}" />
+                                </Frame>
+                            </generic:If.True>
+                            <generic:If.False>
+                                <Label Text="Light" HorizontalTextAlignment="Center" Margin="0, 15, 0, 0" />
+                            </generic:If.False>
+                        </generic:If>
+                    </VerticalStackLayout>
+
+
+                    <VerticalStackLayout>
+                        <VerticalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ChangeThemeCommand}" CommandParameter="dark" />
+                        </VerticalStackLayout.GestureRecognizers>
+
+
+                        <Frame WidthRequest="75" Padding="0" CornerRadius="5">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ChangeThemeCommand}" CommandParameter="dark" />
+                            </Frame.GestureRecognizers>
+                            <Image Source="Theme/dark.png" />
+                        </Frame>
+                        <generic:If Condition="{Binding DarkBorder}">
+                            <generic:If.True>
+                                <Frame Margin="0, 15, 0, 0" Padding="0" BorderColor="Transparent" BackgroundColor="{StaticResource Primary}">
+                                    <Label Text="Dark" HorizontalTextAlignment="Center" TextColor="{StaticResource White}" />
+                                </Frame>
+                            </generic:If.True>
+                            <generic:If.False>
+                                <Label Text="Dark" HorizontalTextAlignment="Center" Margin="0, 15, 0, 0" />
+                            </generic:If.False>
+                        </generic:If>
+                    </VerticalStackLayout>
+
+
+                    <VerticalStackLayout>
+                        <VerticalStackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ChangeThemeCommand}" CommandParameter="auto" />
+                        </VerticalStackLayout.GestureRecognizers>
+
+                        <Frame WidthRequest="75" Padding="0" CornerRadius="5">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ChangeThemeCommand}" CommandParameter="auto" />
+                            </Frame.GestureRecognizers>
+                            <Image Source="Theme/auto.png" />
+                        </Frame>
+                        <generic:If Condition="{Binding AutoBorder}">
+                            <generic:If.True>
+                                <Frame Margin="0, 15, 0, 0" Padding="0" BorderColor="Transparent" BackgroundColor="{StaticResource Primary}">
+                                    <Label Text="System" HorizontalTextAlignment="Center" TextColor="{StaticResource White}" />
+                                </Frame>
+                            </generic:If.True>
+                            <generic:If.False>
+                                <Label Text="System" HorizontalTextAlignment="Center" Margin="0, 15, 0, 0" />
+                            </generic:If.False>
+                        </generic:If>
+                    </VerticalStackLayout>
+                </FlexLayout>
+            </Frame>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

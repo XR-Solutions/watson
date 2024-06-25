@@ -1,4 +1,5 @@
 ﻿using Watson.Mobile.Client.Services.Navigation;
+using Watson.Mobile.Client.Services.Settings;
 using Watson.Mobile.Client.Views;
 
 namespace Watson.Mobile.Client
@@ -6,9 +7,12 @@ namespace Watson.Mobile.Client
     public partial class AppShell : Shell
     {
         private readonly INavigationService _navigationService;
-        public AppShell(INavigationService navigationService)
+        private readonly ISettingsService _settingsService;
+
+        public AppShell(INavigationService navigationService, ISettingsService settingsService)
         {
             _navigationService = navigationService;
+            _settingsService = settingsService;
 
             InitializeComponent();
             InitializeRouting();
@@ -27,6 +31,7 @@ namespace Watson.Mobile.Client
         private static void InitializeRouting()
         {
             Routing.RegisterRoute("AppInfo", typeof(AppInfoView));
+            Routing.RegisterRoute("Appearance", typeof(AppearanceView));
 
             Routing.RegisterRoute("Companion/AddDevice", typeof(AddDeviceView));
             Routing.RegisterRoute("Companion/AddDevice/HoloLens2", typeof(AddHoloLensView));

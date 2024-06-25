@@ -1,10 +1,11 @@
 using Watson.Mobile.Client.Services.Navigation;
+using Watson.Mobile.Client.Services.Settings;
 
 namespace Watson.Mobile.Client
 {
     public partial class App : Application
     {
-        public App(INavigationService navigationService)
+        public App(INavigationService navigationService, ISettingsService settingsService)
         {
             // We will not use the webview for anything else but the model viewer, otherwise this will be quite unsafe.
             // This will give us access to local files, such as our 3d models.
@@ -19,8 +20,9 @@ namespace Watson.Mobile.Client
             });
 
             InitializeComponent();
+            settingsService.Initialize();
 
-            MainPage = new AppShell(navigationService);
+            MainPage = new AppShell(navigationService, settingsService);
         }
     }
 }

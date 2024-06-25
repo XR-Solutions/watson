@@ -125,7 +125,7 @@
                     </HorizontalStackLayout>
 
                     <HorizontalStackLayout Padding="10" Spacing="10" VerticalOptions="Start">
-                        <HorizontalStackLayout.GestureRecognizers> <TapGestureRecognizer  /> </HorizontalStackLayout.GestureRecognizers>
+                        <HorizontalStackLayout.GestureRecognizers> <TapGestureRecognizer Command="{Binding OpenAppearanceCommand}" /> </HorizontalStackLayout.GestureRecognizers>
                         <Label FontFamily="FontAwesome-Solid" Text="&#xf53f;" WidthRequest="15" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
                         <Label Text="Uiterlijk" VerticalTextAlignment="Center" />
                     </HorizontalStackLayout>
