@@ -4,49 +4,62 @@
              x:Class="Watson.Mobile.Client.Views.NotesPage"
              xmlns:vm="clr-namespace:Watson.Mobile.Client.ViewModel"
              xmlns:local="clr-namespace:Watson.Mobile.Client.Models"
+             xmlns:conv="clr-namespace:Watson.Mobile.Client.Converters"
              Title="NotesPage">
 
-    <StackLayout>
-        <Label 
-            Text="Hier komen de aantekeningen"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-        <Button Text="Load Notes" Clicked="OnLoadNotesClicked"/>
-        <CollectionView x:Name="NotesCollectionView">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <StackLayout Padding="10">
-                        <Entry Text="{Binding Name}" Placeholder="Enter Name" Completed="OnNameCompleted"/>
-                        <Entry Text="{Binding Description}" Placeholder="Enter Description" Completed="OnDescriptionCompleted"/>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <conv:Base64ToImageConverter x:Key="Base64ToImageConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
-                        <Label Text="Trace Type:" />
-                        <Picker ItemsSource="{Binding Source={x:Static local:TraceTypesEnumValues.Values}}"
-                                SelectedItem="{Binding TraceType}"
-                                ItemDisplayBinding="{Binding .}"
-                                SelectedIndexChanged="OnTraceTypeChanged" />
+    <ScrollView>
+        <StackLayout>
+            <Label 
+                Text="Hier komen de aantekeningen"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+            <Button Text="Load Notes" Clicked="OnLoadNotesClicked"/>
+            <CollectionView x:Name="NotesCollectionView">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Padding="10">
+                            <Entry Text="{Binding Name}" Placeholder="Enter Name" Completed="OnNameCompleted"/>
+                            <Entry Text="{Binding Description}" Placeholder="Enter Description" Completed="OnDescriptionCompleted"/>
 
-                        <Label Text="Position:" />
-                        <StackLayout Orientation="Horizontal">
-                            <Entry Text="{Binding ObjectMetadata.Position[0]}" Placeholder="X" Completed="OnPositionCompleted"/>
-                            <Entry Text="{Binding ObjectMetadata.Position[1]}" Placeholder="Y" Completed="OnPositionCompleted"/>
-                            <Entry Text="{Binding ObjectMetadata.Position[2]}" Placeholder="Z" Completed="OnPositionCompleted"/>
+                            <Label Text="Trace Type:" />
+                            <Picker ItemsSource="{Binding Source={x:Static local:TraceTypesEnumValues.Values}}"
+                                    SelectedItem="{Binding TraceType}"
+                                    ItemDisplayBinding="{Binding .}"
+                                    SelectedIndexChanged="OnTraceTypeChanged" />
+
+                            <Label Text="Position:" />
+                            <StackLayout Orientation="Horizontal">
+                                <Entry Text="{Binding ObjectMetadata.Position[0]}" Placeholder="X" Completed="OnPositionCompleted"/>
+                                <Entry Text="{Binding ObjectMetadata.Position[1]}" Placeholder="Y" Completed="OnPositionCompleted"/>
+                                <Entry Text="{Binding ObjectMetadata.Position[2]}" Placeholder="Z" Completed="OnPositionCompleted"/>
+                            </StackLayout>
+                            <Label Text="Rotation:" />
+                            <StackLayout Orientation="Horizontal">
+                                <Entry Text="{Binding ObjectMetadata.Rotation[0]}" Placeholder="X" Completed="OnRotationCompleted"/>
+                                <Entry Text="{Binding ObjectMetadata.Rotation[1]}" Placeholder="Y" Completed="OnRotationCompleted"/>
+                                <Entry Text="{Binding ObjectMetadata.Rotation[2]}" Placeholder="Z" Completed="OnRotationCompleted"/>
+                                <Entry Text="{Binding ObjectMetadata.Rotation[3]}" Placeholder="W" Completed="OnRotationCompleted"/>
+                            </StackLayout>
+                            <Label Text="Scale:" />
+                            <StackLayout Orientation="Horizontal">
+                                <Entry Text="{Binding ObjectMetadata.Scale[0]}" Placeholder="X" Completed="OnScaleCompleted"/>
+                                <Entry Text="{Binding ObjectMetadata.Scale[1]}" Placeholder="Y" Completed="OnScaleCompleted"/>
+                                <Entry Text="{Binding ObjectMetadata.Scale[2]}" Placeholder="Z" Completed="OnScaleCompleted"/>
+                            </StackLayout>
+
+                            <Label Text="Image:" />
+                            <Image Source="{Binding ImageBase64, Converter={StaticResource Base64ToImageConverter}}" />
+                            <Button Text="Upload Image" Clicked="OnAddImageClicked"/>
                         </StackLayout>
-                        <Label Text="Rotation:" />
-                        <StackLayout Orientation="Horizontal">
-                            <Entry Text="{Binding ObjectMetadata.Rotation[0]}" Placeholder="X" Completed="OnRotationCompleted"/>
-                            <Entry Text="{Binding ObjectMetadata.Rotation[1]}" Placeholder="Y" Completed="OnRotationCompleted"/>
-                            <Entry Text="{Binding ObjectMetadata.Rotation[2]}" Placeholder="Z" Completed="OnRotationCompleted"/>
-                            <Entry Text="{Binding ObjectMetadata.Rotation[3]}" Placeholder="W" Completed="OnRotationCompleted"/>
-                        </StackLayout>
-                        <Label Text="Scale:" />
-                        <StackLayout Orientation="Horizontal">
-                            <Entry Text="{Binding ObjectMetadata.Scale[0]}" Placeholder="X" Completed="OnScaleCompleted"/>
-                            <Entry Text="{Binding ObjectMetadata.Scale[1]}" Placeholder="Y" Completed="OnScaleCompleted"/>
-                            <Entry Text="{Binding ObjectMetadata.Scale[2]}" Placeholder="Z" Completed="OnScaleCompleted"/>
-                        </StackLayout>
-                    </StackLayout>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-    </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ScrollView>
 </ContentPage>

@@ -69,5 +69,19 @@ namespace Watson.Mobile.Client.Services
 
 			throw new HttpRequestException($"Unexpected status code: {response.StatusCode}");
 		}
+
+		public async Task<bool> UploadImageAsync(NoteImage noteImage)
+		{
+			var jsonData = JsonConvert.SerializeObject(noteImage);
+			var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+
+			var response = await _httpClient.PostAsync($"api/v1/ImageUpload/{noteImage.NoteId}", content);
+			if (response.IsSuccessStatusCode)
+			{
+				return true;
+			}
+
+			throw new HttpRequestException($"Unexpected status code: {response.StatusCode}");
+		}
 	}
 }

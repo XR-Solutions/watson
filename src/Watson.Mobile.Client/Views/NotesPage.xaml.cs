@@ -159,4 +159,30 @@ public partial class NotesPage : ContentPage
 			await DisplayAlert("Error", $"Failed to update note: {ex.Message}", "OK");
 		}
 	}
+
+	private async void OnAddImageClicked(object sender, EventArgs e)
+	{
+		NoteImage image = new NoteImage();
+		var note = (sender as Button).BindingContext as Note;
+		var result = await FilePicker.PickAsync(new PickOptions
+		{
+			FileTypes = FilePickerFileType.Images,
+			PickerTitle = "Pick an image"
+		});
+
+		if (result != null)
+		{
+			using (var stream = await result.OpenReadAsync())
+			{
+				using (var memoryStream = new MemoryStream())
+				{
+					await stream.CopyToAsync(memoryStream);
+					image.NoteId = note.Guid;
+					image.ImageBase64 = Convert.ToBase64String(memoryStream.ToArray());
+				}
+			}
+
+			await _noteService.UploadImageAsync(image);
+		}
+	}
 }

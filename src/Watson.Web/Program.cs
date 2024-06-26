@@ -10,6 +10,7 @@ using Watson.Adapter.SqlServer;
 using Watson.Adapter.SqlServer.Repositories;
 using Watson.Adapter.Stub.Repositories;
 using Watson.Application;
+using Watson.Application.Interfaces.Repositories;
 using Watson.Core.Ports;
 using Watson.Web.Extensions;
 using Watson.Web.Hubs;
@@ -38,7 +39,8 @@ bool useStubs = builder.Configuration.GetValue<bool>("UseStubs");
 
 if (useStubs)
 {
-	builder.Services.AddTransient<INoteRepository, NoteRepositoryStub>();
+	builder.Services.AddSingleton<INoteRepository, NoteRepositoryStub>();
+	builder.Services.AddSingleton<INoteImageRepository, NoteImageRepositoryStub>();
 }
 else
 {
@@ -52,6 +54,7 @@ builder.Services.AddHealthChecks();
 builder.Services.AddSignalR(hubOptions =>
 {
 	hubOptions.EnableDetailedErrors = true;
+	hubOptions.ClientTimeoutInterval = TimeSpan.FromMinutes(70);
 	hubOptions.KeepAliveInterval = TimeSpan.FromMinutes(60);
 });
 
