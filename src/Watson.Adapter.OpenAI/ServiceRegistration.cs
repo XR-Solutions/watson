@@ -18,9 +18,11 @@ namespace Watson.Adapter.OpenAI
             configuration.Bind(nameof(openAiSettings), openAiSettings);
 
             services.AddSemanticKernelExtension(openAiSettings);
+            services.AddWhisperApi(openAiSettings);
 
             #region Services
-            services.AddScoped<IAIChatService, AIChatService>();
+            // TODO: This should be scoped, but for demonstration purposes we will keep everything in memory via a singleton.
+            services.AddSingleton<IAIChatService, AIChatService>();
             #endregion
         }
     }

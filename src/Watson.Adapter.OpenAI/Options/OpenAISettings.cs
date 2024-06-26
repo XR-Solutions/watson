@@ -9,5 +9,8 @@ namespace Watson.Adapter.OpenAI.Options
         
         [Required]
         public string ApiKey {  get; set; }
+        
+        [Required]
+        public string WhisperApiUrl { get; set; }
     }
 }

@@ -1,6 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.SemanticKernel;
 using Microsoft.SemanticKernel.Connectors.OpenAI;
+using Refit;
+using Watson.Adapter.OpenAI.Apis;
 using Watson.Adapter.OpenAI.Options;
 using Watson.Adapter.OpenAI.Plugins;
 
@@ -27,6 +29,16 @@ namespace Watson.Adapter.OpenAI.Extensions
 
             Kernel kernel = builder.Build();
             services.AddSingleton<Kernel>(kernel);
+        }
+
+        public static void AddWhisperApi(this IServiceCollection services, OpenAISettings openAISettings) 
+        {
+            var client = new HttpClient { BaseAddress = new Uri(openAISettings.WhisperApiUrl) };
+            client.DefaultRequestHeaders.Add("Authorization", $"Bearer {openAISettings.ApiKey}");
+            var whisperApi = RestService.For<IWhisperApi>(client);
+
+            services.AddSingleton<IWhisperApi>(whisperApi);
+
         }
     }
 }

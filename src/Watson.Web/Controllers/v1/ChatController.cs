@@ -1,4 +1,5 @@
 ﻿using Asp.Versioning;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using Watson.Application.Features.Chat.Commands;
@@ -30,6 +31,24 @@ namespace Watson.Web.Controllers.v1
         [HttpPost("message")]
         public async Task<IActionResult> SendMessage(SendChatMessageCommand command)
         {
+            return Ok(await Mediator.Send(command));
+        }
+
+        /// <summary>
+        ///     Send a new chat message in an existing session and get a response.
+        /// </summary>
+        /// <returns code="200">Returns the response from the generative model</returns>
+        [HttpPost("richmessage")]
+        public async Task<IActionResult> SendAudioAndImageMessage(IFormFile audio, IFormFile image)
+        {
+            var command = new SendAudioAndImageMessageCommand()
+            {
+                Audio = audio.OpenReadStream(),
+                AudioName = audio.FileName,
+                AudioType = audio.ContentType,
+                Image = image.OpenReadStream(),
+            };
+
             return Ok(await Mediator.Send(command));
         }
     }
