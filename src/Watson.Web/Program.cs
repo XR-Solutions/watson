@@ -54,8 +54,8 @@ builder.Services.AddHealthChecks();
 builder.Services.AddSignalR(hubOptions =>
 {
 	hubOptions.EnableDetailedErrors = true;
-	hubOptions.ClientTimeoutInterval = TimeSpan.FromMinutes(70);
-	hubOptions.KeepAliveInterval = TimeSpan.FromMinutes(60);
+	hubOptions.ClientTimeoutInterval = TimeSpan.FromSeconds(30);
+	hubOptions.KeepAliveInterval = TimeSpan.FromSeconds(15);
 });
 
 var app = builder.Build();

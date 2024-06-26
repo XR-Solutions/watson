@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.IO;
 using System.Threading.Tasks;
 using Watson.Application.Interfaces.Repositories;
 using Watson.Core.Entities;
@@ -24,32 +23,25 @@ namespace Watson.Web.Controllers.v1
 		[HttpPost("{noteId}")]
 		[ProducesResponseType(typeof(NoteImage), StatusCodes.Status201Created)]
 		[ProducesResponseType(typeof(BadRequestResult), StatusCodes.Status400BadRequest)]
-		public async Task<ActionResult<NoteImage>> UploadImage(string noteId, IFormFile file)
+		public async Task<ActionResult<NoteImage>> UploadImage(string noteId, [FromBody] NoteImage noteImage)
 		{
 			try
 			{
-				if (file == null || file.Length == 0)
+				if (noteImage == null || string.IsNullOrEmpty(noteImage.ImageBase64))
 				{
-					return BadRequest("No file uploaded.");
+					return BadRequest("Invalid image data.");
 				}
 
-				using (var ms = new MemoryStream())
+				// Validate the NoteId
+				if (noteImage.NoteId != noteId)
 				{
-					await file.CopyToAsync(ms);
-					var imageBytes = ms.ToArray();
-					var base64String = Convert.ToBase64String(imageBytes);
-
-					// Save the image in NoteImage repository
-					var noteImage = new NoteImage
-					{
-						NoteId = noteId,
-						ImageBase64 = base64String
-					};
-
-					await _noteImageRepository.AddAsync(noteImage);
-
-					return CreatedAtAction(nameof(UploadImage), new { noteId }, noteImage);
+					return BadRequest("NoteId mismatch.");
 				}
+
+				// Save the image in NoteImage repository
+				await _noteImageRepository.AddAsync(noteImage);
+
+				return CreatedAtAction(nameof(UploadImage), new { noteId = noteImage.NoteId }, noteImage);
 			}
 			catch (Exception ex)
 			{

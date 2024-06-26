@@ -59,25 +59,25 @@ namespace Watson.Application.Services
 								column.Item().PaddingVertical(10).LineHorizontal(1).LineColor(Colors.Grey.Lighten2);
 
 								column.Item().PageBreak();
+							}
 
-								column.Item().Text("Bijlagen").FontSize(14).Bold().Underline();
-								foreach (var note2 in notes)
+							column.Item().Text("Bijlagen").FontSize(14).Bold().Underline();
+							foreach (var note2 in notes)
+							{
+								column.Item().PaddingVertical(10).LineHorizontal(1).LineColor(Colors.Grey.Lighten2);
+								column.Item().Text(note2.Name).FontSize(32);
+								var images = noteImages.Where(img => img.NoteId == note2.Guid);
+
+								foreach (var image in images)
 								{
-									column.Item().PaddingVertical(10).LineHorizontal(1).LineColor(Colors.Grey.Lighten2);
-									column.Item().Text(note2.Name).FontSize(32);
-									var images = noteImages.Where(img => img.NoteId == note2.Guid);
-
-									foreach (var image in images)
+									if (!string.IsNullOrEmpty(image.ImageBase64))
 									{
-										if (!string.IsNullOrEmpty(image.ImageBase64))
-										{
-											var imageBytes = Convert.FromBase64String(image.ImageBase64);
+										var imageBytes = Convert.FromBase64String(image.ImageBase64);
 
-											column.Item().PaddingBottom(10).Column(noteColumn =>
-											{
-												noteColumn.Item().Image(imageBytes);
-											});
-										}
+										column.Item().PaddingBottom(10).Column(noteColumn =>
+										{
+											noteColumn.Item().Image(imageBytes);
+										});
 									}
 								}
 							}
