@@ -40,7 +40,8 @@ namespace Watson.Mobile.Client.Services
 				return apiResponse.Data;
 			}
 
-			throw new HttpRequestException($"Unexpected status code: {response.StatusCode}");
+			Console.WriteLine($"Unexpected status code: {response.StatusCode}");
+			return [];
 		}
 
 		public async Task<Note> GetNoteByIdAsync(string noteId)
