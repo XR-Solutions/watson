@@ -5,12 +5,13 @@ using Refit;
 using Watson.Adapter.OpenAI.Apis;
 using Watson.Adapter.OpenAI.Options;
 using Watson.Adapter.OpenAI.Plugins;
+using Watson.Adapter.OpenAI.Services;
 
 namespace Watson.Adapter.OpenAI.Extensions
 {
     public static class ServiceExtensions
     {
-        public static void AddSemanticKernelExtension(this IServiceCollection services, OpenAISettings openAISettings)
+        public static void AddSemanticKernelExtension(this IServiceCollection services, OpenAISettings openAISettings, AiSearchService searchService)
         {
             var builder = Kernel.CreateBuilder()
                 .AddOpenAIChatCompletion(openAISettings.ModelType, openAISettings.ApiKey);
@@ -25,6 +26,7 @@ namespace Watson.Adapter.OpenAI.Extensions
 
             #region Plugins
             builder.Plugins.AddFromType<TimePlugin>();
+            builder.Plugins.AddFromObject(new KompolPlugin(searchService));
             #endregion
 
             Kernel kernel = builder.Build();

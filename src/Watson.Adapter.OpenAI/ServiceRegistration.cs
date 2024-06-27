@@ -14,15 +14,23 @@ namespace Watson.Adapter.OpenAI
             services.AddOptions<OpenAISettings>().BindConfiguration(nameof(OpenAISettings))
                 .ValidateDataAnnotations().ValidateOnStart();
 
+            services.AddOptions<AzureAiSearchSettings>().BindConfiguration(nameof(AzureAiSearchSettings));
+
             var openAiSettings = new OpenAISettings();
             configuration.Bind(nameof(openAiSettings), openAiSettings);
 
-            services.AddSemanticKernelExtension(openAiSettings);
+            var azureAiSearchSettings = new AzureAiSearchSettings();
+            configuration.Bind(nameof(azureAiSearchSettings), azureAiSearchSettings);
+
+            AiSearchService searchService = new(azureAiSearchSettings);
+
+            services.AddSemanticKernelExtension(openAiSettings, searchService);
             services.AddWhisperApi(openAiSettings);
 
             #region Services
             // TODO: This should be scoped, but for demonstration purposes we will keep everything in memory via a singleton.
             services.AddSingleton<IAIChatService, AIChatService>();
+            services.AddSingleton(searchService);
             #endregion
         }
     }
