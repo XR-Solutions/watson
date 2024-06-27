@@ -15,18 +15,18 @@ namespace Watson.Adapter.OpenAI.Services
         private readonly Kernel _kernel;
         private readonly IChatCompletionService _chat;
         private readonly OpenAIPromptExecutionSettings _executionSettings;
-        private readonly IWhisperApi _whipserApi;
+        private readonly IAudioApi _audioApi;
         private readonly FileExtensionContentTypeProvider typeProvider = new();
 
         // TODO: this should not be kept in memory like this
         private readonly ChatHistory _chatHistory = new(WatsonPersona.SystemMessage);
 
-        public AIChatService(Kernel kernel, OpenAIPromptExecutionSettings executionSettings, IWhisperApi whisperApi)
+        public AIChatService(Kernel kernel, OpenAIPromptExecutionSettings executionSettings, IAudioApi audioApi)
         {
             _kernel = kernel;
             _chat = kernel.GetRequiredService<IChatCompletionService>();
             _executionSettings = executionSettings;
-            _whipserApi = whisperApi;
+            _audioApi = audioApi;
         }
 
         public async Task<ChatMessage> InvokePromptAsync(ChatMessage message)
@@ -45,20 +45,22 @@ namespace Watson.Adapter.OpenAI.Services
         }
 
         // TODO: this sucks, remove this
-        public async Task<string> InvokeAudioPromptAsync(Stream audio, string audioName, string audioType, Stream image)
+        public async Task<Stream> InvokeAudioPromptAsync(Stream audio, string audioName, string audioType, Stream image)
         {
-            var whisperResponse = await _whipserApi.TranscribeAudio(new Refit.StreamPart(audio, audioName));
+            var whisperResponse = await _audioApi.TranscribeAudio(new Refit.StreamPart(audio, audioName));
 
             var message = new ChatMessageContentItemCollection
             {
                 new TextContent(whisperResponse.Text)
             };
             // new ImageContent(new ReadOnlyMemory<byte>(image))
-
             _chatHistory.AddUserMessage(message);
 
             var response = await _chat.GetChatMessageContentsAsync(_chatHistory);
-            return ProcessResponseAsync(response);
+            var responseText = ProcessResponseAsync(response);
+
+            var responseAudio = await _audioApi.CreateAudio(new Models.CreateAudioRequest { Input = responseText});
+            return await responseAudio.Content.ReadAsStreamAsync();
         }
         private string ProcessResponseAsync(IReadOnlyList<ChatMessageContent> response)
         {

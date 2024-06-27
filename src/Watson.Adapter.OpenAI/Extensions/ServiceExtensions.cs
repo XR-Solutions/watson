@@ -33,11 +33,12 @@ namespace Watson.Adapter.OpenAI.Extensions
 
         public static void AddWhisperApi(this IServiceCollection services, OpenAISettings openAISettings) 
         {
-            var client = new HttpClient { BaseAddress = new Uri(openAISettings.WhisperApiUrl) };
+            var client = new HttpClient { BaseAddress = new Uri(openAISettings.OpenAIApiUrl) };
             client.DefaultRequestHeaders.Add("Authorization", $"Bearer {openAISettings.ApiKey}");
-            var whisperApi = RestService.For<IWhisperApi>(client);
 
-            services.AddSingleton<IWhisperApi>(whisperApi);
+            var audioApi = RestService.For<IAudioApi>(client);
+
+            services.AddSingleton<IAudioApi>(audioApi);
 
         }
     }

@@ -18,7 +18,7 @@
             <param name="command">The necessary infromation to send a chat message in a session.</param>
             <returns code="200">Returns the response from the generative model</returns>
         </member>
-        <member name="M:Watson.Web.Controllers.v1.ChatController.SendAudioAndImageMessage(Microsoft.AspNetCore.Http.IFormFile,Microsoft.AspNetCore.Http.IFormFile)">
+        <member name="M:Watson.Web.Controllers.v1.ChatController.SendAudioAndImageMessage(Microsoft.AspNetCore.Http.IFormFile)">
             <summary>
                 Send a new chat message in an existing session and get a response.
             </summary>

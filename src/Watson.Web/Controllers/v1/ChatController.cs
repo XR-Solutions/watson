@@ -39,17 +39,19 @@ namespace Watson.Web.Controllers.v1
         /// </summary>
         /// <returns code="200">Returns the response from the generative model</returns>
         [HttpPost("richmessage")]
-        public async Task<IActionResult> SendAudioAndImageMessage(IFormFile audio, IFormFile image)
+        public async Task<IActionResult> SendAudioAndImageMessage(IFormFile audio)
         {
+            //, IFormFile image
             var command = new SendAudioAndImageMessageCommand()
             {
                 Audio = audio.OpenReadStream(),
                 AudioName = audio.FileName,
                 AudioType = audio.ContentType,
-                Image = image.OpenReadStream(),
+                Image = null,
             };
+            var response = await Mediator.Send(command);
 
-            return Ok(await Mediator.Send(command));
+            return File(response, "application/octet-stream", "response.mp3");
         }
     }
 }

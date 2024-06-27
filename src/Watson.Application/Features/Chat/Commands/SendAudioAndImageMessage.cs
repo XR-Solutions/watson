@@ -10,7 +10,7 @@ using Watson.Application.Wrappers;
 
 namespace Watson.Application.Features.Chat.Commands
 {
-    public class SendAudioAndImageMessageCommand : IRequest<Response<SendAudioAndImageMessageResponse>>
+    public class SendAudioAndImageMessageCommand : IRequest<Stream>
     {
         public Stream Audio {  get; set; }
         public string AudioName { get; set; }
@@ -18,7 +18,7 @@ namespace Watson.Application.Features.Chat.Commands
         public Stream Image {  get; set; }
     }
 
-    public class SendAudioAndImageMessageCommandHandler : IRequestHandler<SendAudioAndImageMessageCommand, Response<SendAudioAndImageMessageResponse>>
+    public class SendAudioAndImageMessageCommandHandler : IRequestHandler<SendAudioAndImageMessageCommand, Stream>
     {
         private readonly IChatSessionRepository _chatSessionsRepository;
         private readonly IMapper _mapper;
@@ -33,12 +33,11 @@ namespace Watson.Application.Features.Chat.Commands
             _dateTimeService = dateTimeService;
         }
 
-        public async Task<Response<SendAudioAndImageMessageResponse>> Handle(SendAudioAndImageMessageCommand request, CancellationToken cancellationToken)
+        public async Task<Stream> Handle(SendAudioAndImageMessageCommand request, CancellationToken cancellationToken)
         {
             // TODO: implement this method, this is pure testing
             var modelResponse = await _aiChatService.InvokeAudioPromptAsync(request.Audio, request.AudioName, request.AudioType, request.Image);
-            var response = new SendAudioAndImageMessageResponse() { Message = modelResponse };
-            return new Response<SendAudioAndImageMessageResponse>(response);
+            return modelResponse;
         }
     }
 
@@ -54,10 +53,5 @@ namespace Watson.Application.Features.Chat.Commands
             //    .NotEmpty().WithMessage("{PropertyName} is required")
             //    .NotNull();
         }
-    }
-
-    public class SendAudioAndImageMessageResponse
-    {
-        public string Message { get; set; }
     }
 }
