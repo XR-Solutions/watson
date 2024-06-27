@@ -10,5 +10,7 @@ namespace Watson.Application.Interfaces.Services
         public Task<string> InvokePromptAsync(string message);
 
         public Task<Stream> InvokeAudioPromptAsync(Stream audio, string audioName, string audioType, Stream image);
+
+        public object GetEntireChatHistory();
     }
 }

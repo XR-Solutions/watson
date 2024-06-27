@@ -1,8 +1,10 @@
 ﻿using Asp.Versioning;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Threading.Tasks;
 using Watson.Application.Features.Chat.Commands;
+using Watson.Application.Features.Chat.Queries;
 
 namespace Watson.Web.Controllers.v1
 {
@@ -52,6 +54,16 @@ namespace Watson.Web.Controllers.v1
             var response = await Mediator.Send(command);
 
             return File(response, "application/octet-stream", "response.mp3");
+        }
+
+        /// <summary>
+        ///     Get the entire chat history belonging to a scene
+        /// </summary>
+        /// <returns code="200">Returns the list of messages sent by the Agent and User</returns>
+        [HttpGet("messages")]
+        public async Task<IActionResult> GetEntireChatHistory()
+        {
+            return Ok(await Mediator.Send(new GetEntireChatHistoryQuery()));
         }
     }
 }

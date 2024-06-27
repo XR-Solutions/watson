@@ -24,5 +24,11 @@
             </summary>
             <returns code="200">Returns the response from the generative model</returns>
         </member>
+        <member name="M:Watson.Web.Controllers.v1.ChatController.GetEntireChatHistory">
+            <summary>
+                Get the entire chat history belonging to a scene
+            </summary>
+            <returns code="200">Returns the list of messages sent by the Agent and User</returns>
+        </member>
     </members>
 </doc>

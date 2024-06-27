@@ -73,5 +73,11 @@ namespace Watson.Adapter.OpenAI.Services
             _chatHistory.AddAssistantMessage(builder.ToString());
             return builder.ToString();
         }
+
+        public object GetEntireChatHistory()
+        {
+            // Lol
+            return _chatHistory;
+        }
     }
 }
