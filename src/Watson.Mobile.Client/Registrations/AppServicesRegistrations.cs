@@ -1,4 +1,5 @@
-﻿using Watson.Mobile.Client.Services.Navigation;
+﻿using Watson.Mobile.Client.Services.Endpoints;
+using Watson.Mobile.Client.Services.Navigation;
 using Watson.Mobile.Client.Services.Settings;
 
 namespace Watson.Mobile.Client.Extensions
@@ -9,6 +10,7 @@ namespace Watson.Mobile.Client.Extensions
         {
             builder.Services.AddSingleton<INavigationService, MauiNavigationService>();
             builder.Services.AddSingleton<ISettingsService, SettingsService>();
+            builder.Services.AddSingleton<ChatService>();
 
             return builder;
         }

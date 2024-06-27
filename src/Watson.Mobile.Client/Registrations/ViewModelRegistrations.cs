@@ -9,6 +9,7 @@ namespace Watson.Mobile.Client.Extensions
             builder.Services.AddSingleton<SettingsViewModel>();
             builder.Services.AddSingleton<CompanionViewModel>();
             builder.Services.AddSingleton<AppearanceViewModel>();
+            builder.Services.AddSingleton<CopilotViewModel>();
 
             return builder;
         }
