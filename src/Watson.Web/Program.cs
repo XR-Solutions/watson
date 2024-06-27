@@ -13,17 +13,18 @@ using Watson.Application;
 using Watson.Core.Ports;
 using Watson.Web.Extensions;
 using Watson.Web.Hubs;
+using System;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddApplicationLayer();
 builder.Services.AddSharedAdapter();
 builder.Services.AddPersistenceAdapter(builder.Configuration);
 builder.Services.AddOpenAIAdapter(builder.Configuration);
 builder.Services.AddSwaggerExtension();
+builder.Services.AddHttpLogging(o => { });
 builder.Services.AddHttpLogging(o => { });
 
 builder.Services.AddControllers().AddJsonOptions(o =>
@@ -51,13 +52,21 @@ builder.Services.AddApiVersioningExtension();
 builder.Services.AddVersioningPrefix();
 builder.Services.AddHealthChecks();
 
-builder.Services.AddSignalR();
+builder.Services.AddSignalR(hubOptions =>
+{
+	hubOptions.EnableDetailedErrors = true;
+	hubOptions.ClientTimeoutInterval = TimeSpan.FromSeconds(30);
+	hubOptions.KeepAliveInterval = TimeSpan.FromSeconds(15);
+});
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
+	app.UseDeveloperExceptionPage();
+	app.UseSwaggerExtension();
+	app.UseHttpLogging();
 	app.UseDeveloperExceptionPage();
 	app.UseSwaggerExtension();
 	app.UseHttpLogging();
@@ -72,6 +81,7 @@ app.UseHealthChecks("/health");
 
 app.MapControllers();
 app.MapHub<ChatHub>("/chatHub");
+app.MapHub<NotesHub>("/noteshub");
 
 app.Run();
 

@@ -27,7 +27,8 @@ namespace Watson.Adapter.Stub.Repositories
 
 		public Task<Core.Entities.Note> GetByIdAsync(Guid id)
 		{
-			throw new NotImplementedException();
+			var note = notes.Find(note => note.Guid == id.ToString());
+			return Task.FromResult(note);
 		}
 
 		public Task<int> GetCountAsync()

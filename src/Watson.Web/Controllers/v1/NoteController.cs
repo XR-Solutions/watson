@@ -2,23 +2,24 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 using System.Threading.Tasks;
 using Watson.Application.Features.Notes;
 using Watson.Core.Entities;
+using Watson.Web.Hubs;
 
 namespace Watson.Web.Controllers.v1
 {
+	[ApiController]
 	[Route("[controller]")]
 	[ApiVersion("1.0")]
-    [ApiController]
-    public class NoteController : BaseApiController
+	public class NoteController(IHubContext<NotesHub> hubContext) : BaseApiController
 	{
-		/// <summary>
-		///		Add a new note to a Crime Scene
-		/// </summary>
-		/// <param name="note">A note object containing all information to a note</param>
-		/// <returns>The GUID of the newly created Note</returns>
+		private readonly IHubContext<NotesHub> hubContext = hubContext;
+
 		[HttpPost]
+		[ProducesResponseType(typeof(Created), StatusCodes.Status201Created)]
+		[ProducesResponseType(typeof(NotFoundResult), StatusCodes.Status404NotFound)]
 		public async Task<ActionResult> CreateNote(
 			[FromBody] Note note
 		)
@@ -29,12 +30,9 @@ namespace Watson.Web.Controllers.v1
 			return Created("note", result);
 		}
 
-		/// <summary>
-		///		Update an existing Note within a Crime Scene
-		/// </summary>
-		/// <param name="note"></param>
-		/// <returns>A boolean indicator whether the Note has been successfully updated</returns>
 		[HttpPut]
+		[ProducesResponseType(typeof(Ok), StatusCodes.Status200OK)]
+		[ProducesResponseType(typeof(NotFoundResult), StatusCodes.Status404NotFound)]
 		public async Task<ActionResult> UpdateNote(
 			[FromBody] Note note
 		)
@@ -42,15 +40,15 @@ namespace Watson.Web.Controllers.v1
 			var command = new UpdateNoteCommand { Note = note };
 			var result = await Mediator.Send(command);
 
+			await hubContext.Clients.All.SendAsync("ReceiveNoteUpdate", note.Guid);
+
 			return Ok(result);
 		}
 
-		/// <summary>
-		///		Gets all notes belonging within a Crime Scene
-		/// </summary>
-		/// <returns>A paginated list with all Notes</returns>
 		[HttpGet]
 		[Route("all")]
+		[ProducesResponseType(typeof(Ok), StatusCodes.Status200OK)]
+		[ProducesResponseType(typeof(NotFoundResult), StatusCodes.Status404NotFound)]
 		public async Task<ActionResult> GetAllNotes(
 		)
 		{
@@ -59,5 +57,23 @@ namespace Watson.Web.Controllers.v1
 
 			return Ok(result);
 		}
+
+		[HttpGet]
+		[Route("{id}")]
+		[ProducesResponseType(typeof(OkObjectResult), StatusCodes.Status200OK)]
+		[ProducesResponseType(typeof(NotFoundResult), StatusCodes.Status404NotFound)]
+		public async Task<ActionResult> GetNoteById(string id)
+		{
+			var command = new GetNoteByIdQuery { NoteId = id };
+			var result = await Mediator.Send(command);
+
+			if (result == null)
+			{
+				return NotFound();
+			}
+
+			return Ok(result);
+		}
+
 	}
 }

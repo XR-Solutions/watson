@@ -7,7 +7,7 @@ using Watson.Core.Entities;
 
 namespace Watson.Adapter.SqlServer.Contexts
 {
-	public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : DbContext
 	{
 		public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
 		{
