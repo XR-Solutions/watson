@@ -15,6 +15,7 @@ using Watson.Web.Extensions;
 using Watson.Web.Hubs;
 using System;
 using QuestPDF.Infrastructure;
+using Watson.Application.Interfaces.Repositories;
 
 QuestPDF.Settings.License = LicenseType.Community;
 
@@ -43,7 +44,8 @@ bool useStubs = builder.Configuration.GetValue<bool>("UseStubs");
 
 if (useStubs)
 {
-	builder.Services.AddTransient<INoteRepository, NoteRepositoryStub>();
+    builder.Services.AddSingleton<INoteRepository, NoteRepositoryStub>();
+    builder.Services.AddSingleton<INoteImageRepository, NoteImageRepositoryStub>();
 }
 else
 {
