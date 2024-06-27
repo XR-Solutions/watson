@@ -14,6 +14,9 @@ using Watson.Core.Ports;
 using Watson.Web.Extensions;
 using Watson.Web.Hubs;
 using System;
+using QuestPDF.Infrastructure;
+
+QuestPDF.Settings.License = LicenseType.Community;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,7 +27,6 @@ builder.Services.AddSharedAdapter();
 builder.Services.AddPersistenceAdapter(builder.Configuration);
 builder.Services.AddOpenAIAdapter(builder.Configuration);
 builder.Services.AddSwaggerExtension();
-builder.Services.AddHttpLogging(o => { });
 builder.Services.AddHttpLogging(o => { });
 
 builder.Services.AddControllers().AddJsonOptions(o =>
@@ -64,9 +66,6 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-	app.UseDeveloperExceptionPage();
-	app.UseSwaggerExtension();
-	app.UseHttpLogging();
 	app.UseDeveloperExceptionPage();
 	app.UseSwaggerExtension();
 	app.UseHttpLogging();
