@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.SignalR.Client;
+using Microsoft.Extensions.Options;
+using Watson.Mobile.Client.Options;
 
 namespace Watson.Mobile.Client.Services
 {
@@ -8,10 +10,10 @@ namespace Watson.Mobile.Client.Services
 
 		public event Action<string> NoteUpdated;
 
-		public SignalRService()
+		public SignalRService(IOptions<ApiSettings> apiSettings)
 		{
 			_connection = new HubConnectionBuilder()
-				.WithUrl("http://192.168.178.61:80/noteshub")
+				.WithUrl($"{apiSettings.Value.BaseUrl}/noteshub")
 				.Build();
 
 			_connection.On<string>("ReceiveNoteUpdate", (noteId) =>

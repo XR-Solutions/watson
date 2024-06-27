@@ -1,4 +1,6 @@
+using Microsoft.Extensions.Options;
 using Watson.Mobile.Client.Models.Note;
+using Watson.Mobile.Client.Options;
 using Watson.Mobile.Client.Services.Endpoints;
 
 namespace Watson.Mobile.Client.Views;
@@ -8,9 +10,9 @@ public partial class NotesView
 	private readonly NoteService _noteService;
 	private List<Note> _notes = [];
 
-	public NotesView()
+	public NotesView(IOptions<ApiSettings> apiSettings)
     {
-        _noteService = new NoteService();
+        _noteService = new NoteService(apiSettings);
         InitializeComponent();
 	}
 

@@ -14,6 +14,8 @@ namespace Watson.Mobile.Client.Extensions
             builder.Services.AddTransient<AddDeviceView>();
             builder.Services.AddTransient<AddHoloLensView>();
             builder.Services.AddTransient<AddQuest2View>();
+            builder.Services.AddTransient<NotesView>();
+            builder.Services.AddTransient<NotesPage>();
 
             return builder;
         }

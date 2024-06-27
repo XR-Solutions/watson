@@ -1,4 +1,6 @@
+using Microsoft.Extensions.Options;
 using Watson.Mobile.Client.Models.Note;
+using Watson.Mobile.Client.Options;
 using Watson.Mobile.Client.Services;
 
 namespace Watson.Mobile.Client.Views;
@@ -10,11 +12,11 @@ public partial class NotesPage : ContentPage
 	private readonly SignalRService _signalRService;
 	private bool _isUpdating;  // Add a flag to manage the state
 
-	public NotesPage()
+	public NotesPage(IOptions<ApiSettings> apiSettings)
 	{
 		InitializeComponent();
-		_noteService = new NoteService();
-		_signalRService = new SignalRService();
+		_noteService = new NoteService(apiSettings);
+		_signalRService = new SignalRService(apiSettings);
 		_signalRService.NoteUpdated += OnNoteUpdated;
 	}
 

@@ -1,8 +1,10 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.Extensions.Options;
+using Newtonsoft.Json;
 using System.Text;
 using Watson.Mobile.Client.Http;
 using Watson.Mobile.Client.Models;
 using Watson.Mobile.Client.Models.Note;
+using Watson.Mobile.Client.Options;
 
 namespace Watson.Mobile.Client.Services
 {
@@ -11,12 +13,12 @@ namespace Watson.Mobile.Client.Services
 		private readonly HttpClient _httpClient;
 		//private const string BaseUrl = "http://192.168.178.61:80/api/v1/Note";
 
-		public NoteService()
+		public NoteService(IOptions<ApiSettings> apiSettings)
 		{
 			var handler = new BypassSslValidationHandler();
 			_httpClient = new HttpClient(handler)
 			{
-				BaseAddress = new Uri("http://192.168.178.61:80/")
+				BaseAddress = new Uri(apiSettings.Value.BaseUrl)
 			};
 		}
 
@@ -25,7 +27,7 @@ namespace Watson.Mobile.Client.Services
 			HttpResponseMessage response;
 			try
 			{
-				response = await _httpClient.GetAsync("api/v1/Note/all");
+				response = await _httpClient.GetAsync("/api/v1/Note/all");
 			}
 			catch (Exception e)
 			{
@@ -47,7 +49,7 @@ namespace Watson.Mobile.Client.Services
 
 		public async Task<Note> GetNoteByIdAsync(string noteId)
 		{
-			var response = await _httpClient.GetAsync($"api/v1/Note/{noteId}");
+			var response = await _httpClient.GetAsync($"/api/v1/Note/{noteId}");
 			if (response.IsSuccessStatusCode)
 			{
 				var jsonResponse = await response.Content.ReadAsStringAsync();
@@ -62,7 +64,7 @@ namespace Watson.Mobile.Client.Services
 			var jsonData = JsonConvert.SerializeObject(updatedNote);
 			var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
 
-			var response = await _httpClient.PutAsync("api/v1/Note", content);
+			var response = await _httpClient.PutAsync("/api/v1/Note", content);
 
 			if (response.IsSuccessStatusCode)
 			{
@@ -77,7 +79,7 @@ namespace Watson.Mobile.Client.Services
 			var jsonData = JsonConvert.SerializeObject(noteImage);
 			var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
 
-			var response = await _httpClient.PostAsync($"api/v1/ImageUpload/{noteImage.NoteId}", content);
+			var response = await _httpClient.PostAsync($"/api/v1/ImageUpload/{noteImage.NoteId}", content);
 			if (response.IsSuccessStatusCode)
 			{
 				return true;

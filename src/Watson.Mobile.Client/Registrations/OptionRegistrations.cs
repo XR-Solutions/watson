@@ -10,6 +10,8 @@ namespace Watson.Mobile.Client.Registrations
             builder.Services.AddOptions<LinkSettings>().BindConfiguration(nameof(LinkSettings))
                 .ValidateDataAnnotations().ValidateOnStart();
 
+            builder.Services.AddOptions<ApiSettings>().BindConfiguration(nameof(ApiSettings));
+
             return builder;
         }
     }
